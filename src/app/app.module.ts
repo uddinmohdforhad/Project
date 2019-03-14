@@ -7,14 +7,14 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CustomMaterialModule } from './custom-material.module';
 
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderComponent } from './shared/header/header.component';
+import { LoggingComponent } from './dashboard/logging/logging.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
     HeaderComponent,
+    LoggingComponent,
   ],
   imports: [
     BrowserModule,

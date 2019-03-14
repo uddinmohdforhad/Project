@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { LoggingComponent } from './dashboard/logging/logging.component'
 
 const routes: Routes = [
-  { path: '', redirectTo: '/a', pathMatch: 'full' },
-  { path:'a', component: DashboardComponent }
+  { path: 'dashboard/logging', component: LoggingComponent }
 ];
 
 @NgModule({
