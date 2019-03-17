@@ -24,7 +24,10 @@ router.get('/', (req, res) => {
 /* Staff registration API */
 router.post('/staff/register', (req, res) => {
   let staffData = req.body
-  let staff = new Staff(staffData)
+  let staff = new Staff({
+    email: staffData.email,
+    password: staffData.password
+  })
 
   staff.save((error, registeredStaff) => {
     if (error) {
@@ -58,5 +61,40 @@ router.post('/staff/login', (req, res) => {
      }
   })
 })
+
+/* Get All Staff */
+router.get('/staff/getAll', (res) => {
+  findStaff("", res)
+})
+router.get('/staff/getByEmail', (req, res) => {
+  let data = req.body
+  findStaff(data.email, res)
+})
+
+function findStaff(byEmail, res){
+  if (!byEmail){
+    Staff.find({} , (error, staffList) => {
+      if (error) {
+        console.log(error)
+      } else
+      if (!staffList) {
+        res.status(401).send('no staff members')
+      } else {
+        res.status(200).send(staffList)
+      }
+    })
+  } else {
+    Staff.findOne({ email: byEmail }, (error, staff) => {
+      if (error) {
+        console.log(error)
+      } else
+      if (!staff) {
+        res.status(401).send(`no staff with email: ${byEmail}`)
+      } else {
+        res.status(200).send(staff)
+      }
+    })
+  }
+}
 
 module.exports = router;
