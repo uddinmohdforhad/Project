@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 // Get our API routes
-const api = require('./server/routes/api');
+const api = require('./src/server/routes/api');
 
 const app = express();
 app.use(cors());
@@ -16,20 +16,20 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Point static path to dist
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(__dirname + 'dist/Project'));
 
 // Set our api routes
 app.use('/api', api);
 
 // Catch all other routes and return the index file
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/index.html'));
+app.get('/*', (req, res) => {
+  res.sendFile(__dirname);
 });
 
 /**
  * Get port from environment and store in Express.
  */
-const port = process.env.PORT || '3000';
+const port = process.env.PORT || 3000;
 app.set('port', port);
 
 /**

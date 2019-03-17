@@ -10,7 +10,7 @@ import { CustomMaterialModule } from './custom-material.module';
 
 import { HeaderComponent } from './shared/header/header.component';
 import { LoggingComponent } from './dashboard/logging/logging.component';
-import { AuthService } from './auth.service';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
