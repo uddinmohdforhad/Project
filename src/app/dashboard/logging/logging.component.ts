@@ -17,7 +17,10 @@ export class LoggingComponent implements OnInit {
   loginStaff(){
     this._auth.loginStaff(this.loginStaffData)
     .subscribe(
-      res => console.log(res),
+      res => {
+        console.log(res),
+        localStorage.setItem('token', res.token)
+      },
       err => console.log(err)
      )
   }
