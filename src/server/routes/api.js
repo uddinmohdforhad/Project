@@ -1,4 +1,5 @@
 const express = require('express')
+const jwt = require('jsonwebtoken')
 const router = express.Router()
 
 const mongoose = require('mongoose')
@@ -29,7 +30,9 @@ router.post('/staff/register', (req, res) => {
     if (error) {
       console.log(error)
     } else {
-      res.status(200).send(registeredStaff)
+      let payload = { subject: registeredStaff._id }
+      let token = jwt.sign(payload, 'secretKey')
+      res.status(200).send({token})
     }
   })
 })
@@ -48,7 +51,9 @@ router.post('/staff/login', (req, res) => {
       if ( staff.password !== staffData.password ) {
         res.status(401).send('Invalid password')
       } else {
-        res.status(200).send(staff)
+        let payload = { subject: staff._id }
+        let token = jwt.sign(payload, 'secretKey')
+        res.status(200).send({token})
       }
      }
   })
