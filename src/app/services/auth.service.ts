@@ -5,12 +5,19 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AuthService {
-
-  private _staffLoginUrl = "http://localhost:3000/api/staff/login"
+  
+  private __apiUrl = "http://localhost:3000"    
+  private _staffLoginUrl = `${this.__apiUrl}/api/staff/login`
+  private _staffListUrl = `${this.__apiUrl}/api/staff/getAll`
 
   constructor(private http: HttpClient) { }
 
   loginStaff(staff: any) {
     return this.http.post<any>(this._staffLoginUrl, staff)
   }
+
+  getStaffList() {
+    return this.http.get<any>(this._staffListUrl)
+  }
+
 }

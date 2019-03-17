@@ -24,10 +24,7 @@ router.get('/', (req, res) => {
 /* Staff registration API */
 router.post('/staff/register', (req, res) => {
   let staffData = req.body
-  let staff = new Staff({
-    email: staffData.email,
-    password: staffData.password
-  })
+  let staff = new Staff(staffData)
 
   staff.save((error, registeredStaff) => {
     if (error) {
@@ -63,7 +60,7 @@ router.post('/staff/login', (req, res) => {
 })
 
 /* Get All Staff */
-router.get('/staff/getAll', (res) => {
+router.get('/staff/getAll', (req, res) => {
   findStaff("", res)
 })
 router.get('/staff/getByEmail', (req, res) => {
@@ -72,7 +69,7 @@ router.get('/staff/getByEmail', (req, res) => {
 })
 
 function findStaff(byEmail, res){
-  if (!byEmail){
+  if (!byEmail || byEmail === ""){
     Staff.find({} , (error, staffList) => {
       if (error) {
         console.log(error)
