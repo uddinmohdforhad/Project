@@ -1,3 +1,25 @@
-<p>
-  logging works!
-</p>
+<section id="LoggingPage">
+  <mat-card class="loggingCard">
+    <mat-card-header>
+      <mat-card-title class="loggingCard-title">
+        <mat-icon color="primary" class="loggingCard-icon">account_circle</mat-icon>
+        Sign In
+      </mat-card-title>
+      <mat-card-subtitle>sign into the staff dashboard (<span class="loggingCard-alert">staff only</span>)</mat-card-subtitle>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <form class="loggingCard-form">
+      <mat-form-field class="loggingCard-input">
+        <input matInput placeholder="Username">
+      </mat-form-field>
+      <mat-form-field class="loggingCard-input">
+          <input matInput placeholder="Password">
+        </mat-form-field>
+    </form>
+    <mat-divider></mat-divider>
+    <mat-card-actions class="loggingCard-action">
+      <button mat-raised-button color="primary" class="loggingCard-button-primary">log In</button>
+      <a mat-button color="primary" routerLink="/">Forgotten your password?</a>
+    </mat-card-actions>
+  </mat-card>
+</section>

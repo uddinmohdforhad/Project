@@ -1,0 +1,30 @@
+.loggingCard {
+    max-width: 450px;
+    margin: 30px auto;
+}
+
+.loggingCard-title {
+    display: flex;
+    align-items: center;
+}
+.loggingCard-icon {
+    padding-right: 10px;
+}
+.loggingCard-alert {
+    color: red;
+}
+
+.loggingCard-form {
+    margin-top: 1.25em;
+}
+.loggingCard-input {
+    display: block;
+}
+
+.loggingCard-action {
+    display: flex;
+    flex-direction: row-reverse;
+}
+.loggingCard-button-primary {
+    font-size: 16px;
+}
