@@ -1,27 +1,27 @@
 // Get dependencies
-import express, { static } from 'express';
-import { join } from 'path';
-import { createServer } from 'http';
-import { json, urlencoded } from 'body-parser';
+const express = require('express');
+const path = require('path');
+const http = require('http');
+const bodyParser = require('body-parser');
 
 // Get our API routes
-import api from './server/routes/api';
+const api = require('./server/routes/api');
 
 const app = express();
 
 // Parsers for POST data
-app.use(json());
-app.use(urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // Point static path to dist
-app.use(static(join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, 'dist')));
 
 // Set our api routes
 app.use('/api', api);
 
 // Catch all other routes and return the index file
 app.get('*', (req, res) => {
-  res.sendFile(join(__dirname, 'dist/index.html'));
+  res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 
 /**
@@ -33,7 +33,7 @@ app.set('port', port);
 /**
  * Create HTTP server.
  */
-const server = createServer(app);
+const server = http.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.
