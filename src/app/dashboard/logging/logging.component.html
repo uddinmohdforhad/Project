@@ -10,15 +10,15 @@
     <mat-divider></mat-divider>
     <form class="loggingCard-form">
       <mat-form-field class="loggingCard-input">
-        <input matInput placeholder="Username">
+        <input [(ngModel)]="loginStaffData.email" name="email" type="text" matInput placeholder="Email">
       </mat-form-field>
       <mat-form-field class="loggingCard-input">
-          <input matInput placeholder="Password">
+          <input [(ngModel)]="loginStaffData.password" name="password" type="password" matInput placeholder="Password">
         </mat-form-field>
     </form>
     <mat-divider></mat-divider>
     <mat-card-actions class="loggingCard-action">
-      <button mat-raised-button color="primary" class="loggingCard-button-primary">log In</button>
+      <button (click)="loginStaff()" mat-raised-button color="primary" class="loggingCard-button-primary">log In</button>
       <a mat-button color="primary" routerLink="/">Forgotten your password?</a>
     </mat-card-actions>
   </mat-card>
