@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
+import { DashboardService } from 'src/app/services/dashboard.service';
 
 import {MatPaginator, MatSort, MatTableDataSource, Sort} from '@angular/material';
 
@@ -22,11 +22,11 @@ export class StaffMembersComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private _auth: AuthService) { 
+  constructor(private _dashService: DashboardService) { 
   }
 
   ngOnInit() {
-    this._auth.getStaffList()
+    this._dashService.getStaffList()
       .subscribe(
         res => {
           this.staffList = res

@@ -8,7 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CustomMaterialModule } from './custom-material.module';
 
-import { AuthService } from './services/auth.service';
+import { DashboardService } from './services/dashboard.service';
 
 import { HeaderComponent } from './shared/header/header.component';
 import { LoggingComponent } from './dashboard/logging/logging.component';
@@ -29,7 +29,7 @@ import { StaffMembersComponent } from './dashboard/staff-members/staff-members.c
     BrowserAnimationsModule,
     CustomMaterialModule,
   ],
-  providers: [AuthService],
+  providers: [DashboardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

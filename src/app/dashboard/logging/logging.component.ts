@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
+import { DashboardService } from 'src/app/services/dashboard.service';
 
 @Component({
   selector: 'logging',
@@ -9,13 +9,13 @@ import { AuthService } from 'src/app/services/auth.service';
 export class LoggingComponent implements OnInit {
 
   loginStaffData = { email:"", password: ""}
-  constructor(private _auth: AuthService) { }
+  constructor(private _dashService: DashboardService) { }
 
   ngOnInit() {
   }
 
   loginStaff(){
-    this._auth.loginStaff(this.loginStaffData)
+    this._dashService.loginStaff(this.loginStaffData)
     .subscribe(
       res => {
         console.log(res),
