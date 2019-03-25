@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -13,6 +13,7 @@ import { DashboardService } from './services/dashboard.service';
 import { HeaderComponent } from './shared/header/header.component';
 import { LoggingComponent } from './dashboard/logging/logging.component';
 import { StaffMembersComponent } from './dashboard/staff-members/staff-members.component';
+import { RegistrationComponent } from './dashboard/registration/registration.component';
 
 @NgModule({
   declarations: [
@@ -20,14 +21,16 @@ import { StaffMembersComponent } from './dashboard/staff-members/staff-members.c
     HeaderComponent,
     LoggingComponent,
     StaffMembersComponent,
+    RegistrationComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    CustomMaterialModule,
+    CustomMaterialModule
   ],
   providers: [DashboardService],
   bootstrap: [AppComponent]

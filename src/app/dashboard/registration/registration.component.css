@@ -1,0 +1,43 @@
+.registerCard {
+    max-width: 450px;
+    margin: 30px auto;
+}
+
+.registerCard-title {
+    display: flex;
+    align-items: center;
+}
+.registerCard-icon {
+    padding-right: 10px;
+}
+.registerCard-alert {
+    color: red;
+}
+
+.registerCard-form {
+    margin-top: 1.25em;
+}
+.registerCard-input {
+    display: block;
+}
+.registerCard-flex {
+    display: flex;
+    justify-content: space-between;
+}
+.registerCard-flex-full-grow {
+    flex-grow: 1;
+}
+.registerCard-checkbox {
+    display: block;
+    padding-bottom: 1.25em;
+}
+
+.registerCard-action {
+    display: flex;
+    flex-direction: row-reverse;
+    padding-bottom: 0;
+    margin-bottom: -8px;
+}
+.registerCard-button-primary {
+    font-size: 16px;
+}

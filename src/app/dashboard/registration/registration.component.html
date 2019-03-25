@@ -1,0 +1,39 @@
+<section>
+  <mat-card class="registerCard">
+    <mat-card-header>
+        <mat-card-title class="registerCard-title">
+          <mat-icon color="primary" class="registerCard-icon">account_circle</mat-icon>
+          Add new staff account
+        </mat-card-title>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <form class="registerCard-form">
+        <mat-form-field class="registerCard-input">
+          <input matInput [formControl]="nameFormControl" [(ngModel)]="newStaffData.name" name="name" type="text" placeholder="Name">
+          <mat-error *ngIf="nameFormControl.hasError('required')">
+            Name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <div class="registerCard-flex">
+          <mat-form-field class="registerCard-flex-full-grow">
+            <input matInput name="password" type="text" disabled placeholder="Click to generate a random password" value="{{newStaffData.password}}">
+          </mat-form-field>
+          <a mat-button (click)="generatePassword()" color="accent">new password</a>
+        </div>
+        <mat-form-field class="registerCard-input">
+          <input matInput [formControl]="emailFormControl" [(ngModel)]="newStaffData.email" name="email" type="email" placeholder="Email">
+          <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="emailFormControl.hasError('required')">
+            Email is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-checkbox [(ngModel)]="newStaffData.isAdmin" [ngModelOptions]="{standalone: true}" class="registerCard-checkbox">Admin</mat-checkbox>
+        <mat-divider></mat-divider>
+        <mat-card-actions class="registerCard-action">
+          <button (click)="createAccount()" mat-raised-button color="primary" class="registerCard-button-primary">Create Account</button>
+        </mat-card-actions>
+      </form>
+  </mat-card>
+</section>
