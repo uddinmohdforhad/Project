@@ -28,14 +28,31 @@ router.post('/staff/register', (req, res) => {
 
   staff.save((error, registeredStaff) => {
     if (error) {
-      console.log(error)
+      if(staffIsDuplicate(staff.email)) {
+        res.status(401).send({success: false, message: "Email already exits in database"})
+      }
+      else {
+        console.log(error)
+      }
     } else {
       let payload = { subject: registeredStaff._id }
       let token = jwt.sign(payload, 'secretKey')
-      res.status(200).send({token})
+      res.status(200).send({success: true})
     }
   })
 })
+
+async function staffIsDuplicate(id) {
+  isDuplicate = false
+  await Staff.findOne({ email: id }, (error, staff) => {
+    if(error) {
+      console.log(error);
+    } else if (staff) {
+      isDuplicate = true
+    }
+  })
+  return isDuplicate;
+}
 
 /* Staff login API */
 router.post('/staff/login', (req, res) => {
