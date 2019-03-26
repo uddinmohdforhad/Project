@@ -122,4 +122,15 @@ router.post('/staff/remove', (req, res) => {
   })
 })
 
+/* find and update */
+router.post('/staff/update', (req, res) => {
+  var staffData = req.body
+  var id = staffData._id
+  Staff.findByIdAndUpdate(id, staffData, (error, updatedStaff) => {
+    if (error) console.log(error)
+    else if (!updatedStaff) res.status(401).send({success: false, message: `staff (email: ${staffData.email}) not found`});
+    else res.status(200).send({success: true, message: `${updatedStaff.email} was updated`})
+  })
+})
+
 module.exports = router;
