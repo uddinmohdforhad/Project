@@ -111,4 +111,15 @@ function findStaff(byEmail, res){
   }
 }
 
+/* Find and remove */
+router.post('/staff/remove', (req, res) => {
+  var staffData = req.body
+  var id = staffData._id
+  Staff.findByIdAndRemove(id, (error, removedStaff) => {
+    if (error) console.log(error);
+    else if (!removedStaff) res.status(401).send({success: false, message: `staff (email: ${staffData.email}) not found`});
+    else res.status(200).send({success: true, message: `${removedStaff.email} has been removed from database`});
+  })
+})
+
 module.exports = router;
