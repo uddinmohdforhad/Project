@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DashboardService } from 'src/app/services/dashboard.service';
 
 @Component({
@@ -9,14 +9,15 @@ import { DashboardService } from 'src/app/services/dashboard.service';
 })
 export class MembersDetailsComponent implements OnInit {
   getStaff = {_id: ""}
-  staffDetails = {information: {}}
+  staffDetails = {name:"", information: {}}
 
   constructor(
     private _dashboardService: DashboardService,
-    private _route: ActivatedRoute) { }
+    private _acctivatedRoute: ActivatedRoute,
+    private _router: Router) { }
 
   ngOnInit() {
-    this._route.paramMap
+    this._acctivatedRoute.paramMap
       .subscribe(params => {
         this.getStaff._id = params.get('id');
       }
@@ -26,8 +27,23 @@ export class MembersDetailsComponent implements OnInit {
         res => {
           this.staffDetails = res.objectReturned
         },
-        err => console.log(err)
+        err => {
+          alert(err.error.message)
+          this._router.navigate(["/dashboard/staff-members"])
+        }
     );
   }
 
+  remove() {
+    var confirm = window.confirm(`Do you want to remove ${this.staffDetails.name}?`)
+    if(confirm == true) {
+      this._dashboardService.removeStaff(this.staffDetails).subscribe(
+        res => {
+          alert(res.message)
+          this._router.navigate(["/dashboard/staff-members"])
+        },
+        err => console.log(err)
+      )
+    }
+  }
 }

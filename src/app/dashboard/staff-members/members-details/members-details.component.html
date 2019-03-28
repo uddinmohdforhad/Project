@@ -23,8 +23,8 @@
     </form>
     <mat-divider></mat-divider>
     <mat-card-actions class="detailsCard-action">
-      <button mat-raised-button color="primary" class="detailsCard-button-primary">Update Details</button>
-      <button mat-raised-button color="warn" class="detailsCard-button-primary">Remove Staff</button>
+      <button mat-raised-button color="primary" class="detailsCard-button-primary" >Update Details</button>
+      <button mat-raised-button color="warn" class="detailsCard-button-primary" (click)="remove()">Remove Staff</button>
       <button mat-raised-button class="detailsCard-button-primary" routerLink="/dashboard/staff-members">Back</button>
     </mat-card-actions>
   </mat-card>
