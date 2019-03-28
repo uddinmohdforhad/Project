@@ -63,6 +63,10 @@ export class StaffMembersComponent implements OnInit {
       }
     });
   }
+
+  onClick(id: object) {
+    console.log(id)
+  }
 }
 
 function compare(a: number | string | boolean, b: number | string | boolean, isAsc: boolean) {
