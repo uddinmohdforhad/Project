@@ -1,0 +1,32 @@
+.detailsCard {
+    max-width: 450px;
+    margin: 30px auto;
+}
+
+.detailsCard-title {
+    display: flex;
+    align-items: center;
+}
+.detailsCard-icon {
+    padding-right: 10px;
+}
+.detailsCard-alert {
+    color: red;
+}
+
+.detailsCard-form {
+    margin-top: 1.25em;
+}
+.detailsCard-input {
+    display: block;
+}
+
+.detailsCard-action {
+    display: flex;
+    flex-direction: row-reverse;
+    padding-bottom: 0;
+    margin-bottom: -8px;
+}
+.detailsCard-button-primary {
+    font-size: 16px;
+}

@@ -1,6 +1,5 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DashboardService } from 'src/app/services/dashboard.service';
-
 import {MatPaginator, MatSort, MatTableDataSource, Sort} from '@angular/material';
 
 export interface StaffListData {
@@ -22,8 +21,7 @@ export class StaffMembersComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private _dashService: DashboardService) { 
-  }
+  constructor(private _dashService: DashboardService) { }
 
   ngOnInit() {
     this._dashService.getStaffList()
@@ -62,10 +60,6 @@ export class StaffMembersComponent implements OnInit {
         default: return 0;
       }
     });
-  }
-
-  onClick(id: object) {
-    console.log(id)
   }
 }
 

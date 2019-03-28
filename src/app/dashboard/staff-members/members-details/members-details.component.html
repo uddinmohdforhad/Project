@@ -1,0 +1,31 @@
+<section id="StaffDetailsPage">
+  <mat-card class="detailsCard">
+    <mat-card-header>
+      <mat-card-title class="detailsCard-title">
+        <mat-icon color="primary" class="detailsCard-icon">assignment</mat-icon>
+        Staff details
+      </mat-card-title>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <form class="detailsCard-form">
+      <mat-form-field class="detailsCard-input">
+        <input name="id" type="text" matInput placeholder="Id" value="{{staffDetails._id}}" disabled>
+      </mat-form-field>
+      <mat-form-field class="detailsCard-input">
+        <input name="email" type="text" matInput placeholder="Email" value="{{staffDetails.email}}" disabled>
+      </mat-form-field>
+      <mat-form-field class="detailsCard-input">
+        <input name="name" type="text" matInput placeholder="Name" value="{{staffDetails.name}}" disabled>
+      </mat-form-field>
+      <mat-form-field class="detailsCard-input">
+        <input name="age" type="text" matInput placeholder="Age" value="{{staffDetails.information.age}}" disabled>
+      </mat-form-field>
+    </form>
+    <mat-divider></mat-divider>
+    <mat-card-actions class="detailsCard-action">
+      <button mat-raised-button color="primary" class="detailsCard-button-primary">Update Details</button>
+      <button mat-raised-button color="warn" class="detailsCard-button-primary">Remove Staff</button>
+      <button mat-raised-button class="detailsCard-button-primary" routerLink="/dashboard/staff-members">Back</button>
+    </mat-card-actions>
+  </mat-card>
+</section>
