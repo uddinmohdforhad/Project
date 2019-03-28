@@ -111,6 +111,16 @@ function findStaff(byEmail, res){
   }
 }
 
+router.post('/staff/getById', (req, res) => {
+  var staffData = req.body
+  var id = staffData._id
+  Staff.findById(id, (error, staff) => {
+    if (error) console.log(error)
+    else if (!staff) res.status(401).send({success: false, message: `staff (id: ${id}) not found`});
+    else res.status(200).send({success: true, message: `${staff.email} was returned`, objectReturned: staff})
+  })
+})
+
 /* Find and remove */
 router.post('/staff/remove', (req, res) => {
   var staffData = req.body

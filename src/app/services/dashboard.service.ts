@@ -10,6 +10,7 @@ export class DashboardService {
   private _staffLoginUrl = `${this.__apiUrl}/api/staff/login`
   private _staffListUrl = `${this.__apiUrl}/api/staff/getAll`
   private _staffRegister = `${this.__apiUrl}/api/staff/register`
+  private _staffGetById = `${this.__apiUrl}/api/staff/getById`
 
   constructor(private http: HttpClient) { }
 
@@ -23,5 +24,9 @@ export class DashboardService {
 
   getStaffList() {
     return this.http.get<any>(this._staffListUrl)
+  }
+
+  getStaffById(staff: any) {
+    return this.http.post<any>(this._staffGetById, staff)
   }
 }
