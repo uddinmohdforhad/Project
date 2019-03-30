@@ -1,0 +1,19 @@
+.dialog {
+    width: 400px;
+}
+
+h3 {
+    font-weight: 500;
+    font-family: Roboto,Helvetica Neue,sans-serif;
+}
+
+.dialog-flex {
+    display: flex;
+    justify-content: space-between;
+}
+.dialog-flex-full-grow {
+    flex-grow: 1;
+}
+.dialog-input {
+    width: 250px;
+}

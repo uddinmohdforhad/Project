@@ -1,0 +1,42 @@
+<section class="dialog">
+  <h1 mat-dialog-title>Update Details</h1>
+  <div mat-dialog-content>
+    <div class="dialog-flex">
+      <h3>Id</h3>
+      <mat-form-field class="dialog-input">
+        <input matInput [(ngModel)]="data._id" disabled>
+      </mat-form-field>
+    </div>
+    <div class="dialog-flex">
+      <h3>Name</h3>
+      <mat-form-field class="dialog-input">
+        <input matInput [(ngModel)]="data.name">
+      </mat-form-field>
+    </div>
+    <div class="dialog-flex">
+      <h3>Email</h3>
+      <mat-form-field class="dialog-input">
+        <input matInput [(ngModel)]="data.email">
+      </mat-form-field>
+    </div>
+    <div class="dialog-flex">
+      <h3>Password</h3>
+      <div class="dialog-input">
+          <mat-form-field>
+            <input matInput type="password" [(ngModel)]="data.password" disabled>
+          </mat-form-field>
+          <button mat-button color="accent">new</button>
+      </div>
+    </div>
+    <div class="dialog-flex">
+      <h3>Age</h3>
+      <mat-form-field class="dialog-input">
+        <input matInput [(ngModel)]="data.information.age">
+      </mat-form-field>
+    </div>
+  </div>
+  <div mat-dialog-actions align="end">
+    <button mat-button (click)="onClose()">Close</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="data">Update</button>
+  </div>
+</section>
