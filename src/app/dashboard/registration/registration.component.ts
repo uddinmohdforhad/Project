@@ -12,7 +12,10 @@ export class RegistrationComponent implements OnInit {
     name: "",
     email: "",
     password: "",
-    isAdmin: false
+    isAdmin: false,
+    information: {
+      age: -1
+    },
   }
   nameFormControl = new FormControl('', [Validators.required]);
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
