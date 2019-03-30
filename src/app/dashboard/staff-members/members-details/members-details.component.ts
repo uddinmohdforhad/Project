@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DashboardService } from 'src/app/services/dashboard.service';
+import { MatDialog } from '@angular/material';
+import { UpdateMemberDetailsDialogComponent } from '../update-member-details-dialog/update-member-details-dialog.component';
 
 @Component({
   selector: 'members-details',
@@ -14,7 +16,8 @@ export class MembersDetailsComponent implements OnInit {
   constructor(
     private _dashboardService: DashboardService,
     private _acctivatedRoute: ActivatedRoute,
-    private _router: Router) { }
+    private _router: Router,
+    public dialog: MatDialog) { }
 
   ngOnInit() {
     this._acctivatedRoute.paramMap
@@ -32,6 +35,28 @@ export class MembersDetailsComponent implements OnInit {
           this._router.navigate(["/dashboard/staff-members"])
         }
     );
+  }
+
+  update() {
+    const dialogRef = this.dialog.open(UpdateMemberDetailsDialogComponent, {
+      data: this.staffDetails
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        this.staffDetails = result;
+        this.updateDatabase();
+      } 
+    });
+  }
+
+  updateDatabase() {
+    this._dashboardService.updateStaff(this.staffDetails).subscribe(
+      res => alert(res.message),
+      err => {
+        console.log(err);
+        alert("An error occurred, please try again");
+      }
+    )
   }
 
   remove() {
