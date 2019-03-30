@@ -12,6 +12,7 @@ export class DashboardService {
   private _staffRegister = `${this.__apiUrl}/api/staff/register`
   private _staffGetById = `${this.__apiUrl}/api/staff/getById`
   private _staffRemoveUrl = `${this.__apiUrl}/api/staff/remove`
+  private _staffUpdateUrl = `${this.__apiUrl}/api/staff/update`
 
   constructor(private http: HttpClient) { }
 
@@ -33,5 +34,9 @@ export class DashboardService {
 
   removeStaff(staff: any) {
     return this.http.post<any>(this._staffRemoveUrl, staff)
+  }
+
+  updateStaff(staff: any) {
+    return this.http.post<any>(this._staffUpdateUrl, staff)
   }
 }
