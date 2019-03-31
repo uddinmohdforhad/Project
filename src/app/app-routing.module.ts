@@ -6,12 +6,15 @@ import { StaffMembersComponent } from './dashboard/staff-members/staff-members.c
 import { RegistrationComponent } from './dashboard/registration/registration.component';
 import { MembersDetailsComponent } from './dashboard/staff-members/members-details/members-details.component';
 
+import { SignUpComponent } from './website/sign-up/sign-up.component';
+
 const routes: Routes = [
   { path: 'dashboard', redirectTo: '/dashboard/logging', pathMatch: 'full' },
   { path: 'dashboard/register', component: RegistrationComponent },
   { path: 'dashboard/logging', component: LoggingComponent },
   { path: 'dashboard/staff-members/:id', component: MembersDetailsComponent },
   { path: 'dashboard/staff-members', component: StaffMembersComponent },
+  { path: 'sign-up', component: SignUpComponent },
 ];
 
 @NgModule({

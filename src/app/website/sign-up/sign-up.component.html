@@ -1,0 +1,71 @@
+<section>
+  <mat-card class="signupCard">
+    <mat-card-header>
+        <mat-card-title class="signupCard-title">
+          <mat-icon color="primary" class="signupCard-icon">account_circle</mat-icon>
+          Sign Up
+        </mat-card-title>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <form class="signupCard-form">
+        <mat-form-field class="signupCard-input">
+          <input matInput [formControl]="emailFormControl" name="email" type="email" placeholder="Email" required>
+          <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="emailFormControl.hasError('required')">
+            Email is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="signupCard-input">
+          <input matInput [formControl]="nameFormControl" name="name" type="text" placeholder="Name" required>
+          <mat-error *ngIf="nameFormControl.hasError('required')">
+            Name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="signupCard-input">
+          <input matInput [formControl]="passwordFormControl" name="password" [type]="hidePassword ? 'password' : 'text'" placeholder="Password" (change)="passwordOnChange()" required>
+          <button type="button" mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+            <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-error *ngIf="passwordFormControl.hasError('required')">
+            Password is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="signupCard-input">
+          <input matInput [formControl]="confirmPasswordFormControl" name="confirmPassword" [type]="hideConfirmPassword ? 'password' : 'text'" placeholder="Confirm Password" required>
+          <button type="button" mat-icon-button matSuffix (click)="hideConfirmPassword = !hideConfirmPassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideConfirmPassword">
+            <mat-icon>{{hideConfirmPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-error *ngIf="confirmPasswordFormControl.hasError('required')">
+            Password is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="confirmPasswordFormControl.hasError('notEqual')">
+            Password and Confirm Password does not match
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="signupCard-input">
+          <input matInput [formControl]="numberFormControl" name="number" type="text" placeholder="Phone Number" required>
+          <mat-error *ngIf="numberFormControl.hasError('required')">
+            Phone Number is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="signupCard-input">
+          <input matInput [formControl]="addressFormControl" name="address" type="text" placeholder="Address" required>
+          <mat-error *ngIf="numberFormControl.hasError('required')">
+              Address is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="signupCard-input">
+          <input matInput [formControl]="postCodeFormControl" name="postCode" type="text" placeholder="Post Code" required>
+          <mat-error *ngIf="numberFormControl.hasError('required')">
+              Post Code is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-divider></mat-divider>
+        <mat-card-actions class="signupCard-action">
+          <button (click)="createAccount()" mat-raised-button color="primary" class="signupCard-button-primary">Create Account</button>
+        </mat-card-actions>
+      </form>
+  </mat-card>
+</section>

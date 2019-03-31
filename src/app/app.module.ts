@@ -17,6 +17,7 @@ import { StaffMembersComponent } from './dashboard/staff-members/staff-members.c
 import { RegistrationComponent } from './dashboard/registration/registration.component';
 import { MembersDetailsComponent } from './dashboard/staff-members/members-details/members-details.component';
 import { UpdateMemberDetailsDialogComponent } from './dashboard/staff-members/update-member-details-dialog/update-member-details-dialog.component';
+import { SignUpComponent } from './website/sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { UpdateMemberDetailsDialogComponent } from './dashboard/staff-members/up
     StaffMembersComponent,
     RegistrationComponent,
     MembersDetailsComponent,
-    UpdateMemberDetailsDialogComponent
+    UpdateMemberDetailsDialogComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,

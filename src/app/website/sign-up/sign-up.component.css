@@ -1,0 +1,29 @@
+.signupCard {
+    max-width: 450px;
+    margin: 30px auto;
+}
+
+.signupCard-title {
+    display: flex;
+    align-items: center;
+}
+.signupCard-icon {
+    padding-right: 10px;
+}
+
+.signupCard-form {
+    margin-top: 1.25em;
+}
+.signupCard-input {
+    display: block;
+}
+
+.signupCard-action {
+    display: flex;
+    flex-direction: row-reverse;
+    padding-bottom: 0;
+    margin-bottom: -8px;
+}
+.signupCard-button-primary {
+    font-size: 16px;
+}
