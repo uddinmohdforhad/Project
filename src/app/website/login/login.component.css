@@ -10,6 +10,9 @@
 .loginCard-icon {
     padding-right: 10px;
 }
+.loginCard-subtitle {
+    margin-bottom: 0;
+}
 
 .loginCard-form {
     margin-top: 1.25em;
@@ -20,9 +23,8 @@
 
 .loginCard-action {
     display: flex;
-    flex-direction: row-reverse;
-    padding-bottom: 0;
-    margin-bottom: -8px;
+    margin-top: 8px;
+    margin-bottom: 8px;
 }
 .loginCard-button-primary {
     font-size: 16px;

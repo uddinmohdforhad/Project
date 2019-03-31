@@ -169,4 +169,25 @@ router.post('/customer/signup', (req, res) => {
   })
 })
 
+router.post('/customer/login', (req, res) => {
+  let customerData = req.body
+
+  Customer.findOne({ email: customerData.email }, (error, customer) => {
+    if(error) {
+      console.log(error)
+    } else {
+      if (!customer) {
+        res.status(401).send({success: false, message: 'Invalid email'})
+      } else
+      if ( customer.password !== customerData.password ) {
+        res.status(401).send({success: false, message: 'Invalid password'})
+      } else {
+        let payload = { subject: customer._id }
+        let token = jwt.sign(payload, 'secretKey')
+        res.status(200).send({success: true, token})
+      }
+     }
+  })
+})
+
 module.exports = router;
