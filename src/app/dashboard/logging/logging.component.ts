@@ -6,7 +6,7 @@ import { DashboardService } from 'src/app/services/dashboard.service';
   templateUrl: './logging.component.html',
   styleUrls: ['./logging.component.css']
 })
-export class LoggingComponent implements OnInit {
+export class StaffLoggingComponent implements OnInit {
 
   loginStaffData = { email:"", password: ""}
   constructor(private _dashService: DashboardService) { }
