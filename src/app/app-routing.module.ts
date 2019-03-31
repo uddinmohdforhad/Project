@@ -7,6 +7,7 @@ import { RegistrationComponent } from './dashboard/registration/registration.com
 import { MembersDetailsComponent } from './dashboard/staff-members/members-details/members-details.component';
 
 import { SignUpComponent } from './website/sign-up/sign-up.component';
+import { LoginComponent } from './website/login/login.component';
 
 const routes: Routes = [
   { path: 'dashboard', redirectTo: '/dashboard/logging', pathMatch: 'full' },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'dashboard/staff-members/:id', component: MembersDetailsComponent },
   { path: 'dashboard/staff-members', component: StaffMembersComponent },
   { path: 'sign-up', component: SignUpComponent },
+  { path: 'log-in', component: LoginComponent },
 ];
 
 @NgModule({

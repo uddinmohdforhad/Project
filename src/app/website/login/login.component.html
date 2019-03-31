@@ -1,3 +1,24 @@
-<p>
-  login works!
-</p>
+<section id="LogInPage">
+    <mat-card class="loginCard">
+      <mat-card-header>
+        <mat-card-title class="loginCard-title">
+          <mat-icon color="primary" class="loginCard-icon">account_circle</mat-icon>
+          Log in to restaurant
+        </mat-card-title>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <form class="loginCard-form">
+        <mat-form-field class="loginCard-input">
+          <input [(ngModel)]="customerData.email" name="email" type="text" matInput placeholder="Email">
+        </mat-form-field>
+        <mat-form-field class="loginCard-input">
+            <input [(ngModel)]="customerData.password" name="password" type="password" matInput placeholder="Password">
+          </mat-form-field>
+      </form>
+      <mat-divider></mat-divider>
+      <mat-card-actions class="loginCard-action">
+        <button (click)="loginCustomer()" mat-raised-button color="primary" class="loginCard-button-primary">Log In</button>
+        <a mat-button color="primary" routerLink="/">Forgotten your password?</a>
+      </mat-card-actions>
+    </mat-card>
+  </section>

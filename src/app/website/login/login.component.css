@@ -1,0 +1,29 @@
+.loginCard {
+    max-width: 450px;
+    margin: 30px auto;
+}
+
+.loginCard-title {
+    display: flex;
+    align-items: center;
+}
+.loginCard-icon {
+    padding-right: 10px;
+}
+
+.loginCard-form {
+    margin-top: 1.25em;
+}
+.loginCard-input {
+    display: block;
+}
+
+.loginCard-action {
+    display: flex;
+    flex-direction: row-reverse;
+    padding-bottom: 0;
+    margin-bottom: -8px;
+}
+.loginCard-button-primary {
+    font-size: 16px;
+}
