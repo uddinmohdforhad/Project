@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CustomMaterialModule } from './custom-material.module';
 
 import { DashboardService } from './services/dashboard.service';
+import { AuthService } from './services/auth.service';
 
 import { HeaderComponent } from './shared/header/header.component';
 import { LoggingComponent } from './dashboard/logging/logging.component';
@@ -39,7 +40,10 @@ import { UpdateMemberDetailsDialogComponent } from './dashboard/staff-members/up
   entryComponents: [ 
     UpdateMemberDetailsDialogComponent, 
   ],
-  providers: [DashboardService],
+  providers: [
+    DashboardService,
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
