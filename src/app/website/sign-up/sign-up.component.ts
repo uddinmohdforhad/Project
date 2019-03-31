@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'sign-up',
@@ -19,30 +20,53 @@ export class SignUpComponent implements OnInit {
     this.confirmPasswordFormControl.setValidators([Validators.required, ConfirmPasswordValidator(this.passwordFormControl.value)])
   }
 
-  customer = {
-    email: "",
-    password: "",
-    name: "",
-    number: "",
-    address: "",
-    postCode: ""
-  }
   hidePassword = true;
   hideConfirmPassword = true;
 
-  constructor(private _authService: AuthService) { }
+  constructor(private _authService: AuthService,
+              private _router: Router) { }
 
   ngOnInit() {
   }
   
   createAccount() {
-    this._authService.signUp(this.customer)
-    .subscribe(
-      res => console.log(res),// redirect to home and logged in
-      err => console.log(err) // pop up alert with error
-    )
+    if(this.formHasErrors() == false){
+      var newCustomer = {
+        email: this.emailFormControl.value,
+        password: this.passwordFormControl.value,
+        name: this.nameFormControl.value,
+        number: this.numberFormControl.value,
+        address: this.addressFormControl.value,
+        postCode: this.postCodeFormControl.value
+      }
+      this._authService.signUp(newCustomer)
+      .subscribe(
+        res => {
+          console.log(res)
+          localStorage.setItem('token', res.token);
+          this._router.navigate([''])
+        },// redirect to home and logged in
+        err => {
+          alert(`Error: ${err.error.message}`)
+        }
+      )
+    }
   }
 
+  formHasErrors(){
+    if(this.emailFormControl.errors
+      || this.passwordFormControl.errors
+      || this.confirmPasswordFormControl.errors
+      || this.nameFormControl.errors
+      || this.numberFormControl.errors
+      || this.addressFormControl.errors
+      || this.postCodeFormControl.errors) {
+        console.log("has errors")
+        return true
+    } else {
+      return false
+    }
+  }
 }
 
 export function ConfirmPasswordValidator(compareTo: string): ValidatorFn {
