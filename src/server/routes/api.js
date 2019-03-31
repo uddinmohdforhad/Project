@@ -7,6 +7,7 @@ const db = "mongodb+srv://admin:zFGRKXn4aHKfKdX@myproject-k5h8e.mongodb.net/Proj
 
 /* import Models */
 const Staff = require('../models/staff')
+const Customer = require('../models/customer')
  
 mongoose.connect(db, err => {
   if (err) {
@@ -140,6 +141,31 @@ router.post('/staff/update', (req, res) => {
     if (error) console.log(error)
     else if (!updatedStaff) res.status(401).send({success: false, message: `staff (email: ${staffData.email}) not found`});
     else res.status(200).send({success: true, message: `${updatedStaff.email} was updated`})
+  })
+})
+
+
+/* Customer Sign Up */
+router.post('/customer/signup', (req, res) => {
+  var customerData = req.body
+  var newCustomer = new Customer(customerData)
+  console.log(newCustomer)
+  newCustomer.save((error, signupCustomer) => {
+    if (error) { 
+      if(error.name == "MongoError" && error.code == 11000) {
+        res.status(401).send({success: false, message: "Email already exits in database"})
+      }
+      else if(error.name == "ValidationError") {
+        res.status(401).send({success: false, message: error.message})
+      }
+      else {
+        res.status(500).send(error)
+      }
+    } else {
+      let payload = { subject: signupCustomer._id }
+      let token = jwt.sign(payload, 'secretKey')
+      res.status(200).send({success: true, token: token})
+    }
   })
 })
 
