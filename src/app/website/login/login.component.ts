@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
       res => {
         console.log(res),
         localStorage.setItem('token', res.token)
+        alert('You have registered successfully')
         this._router.navigate([''])
       },// redirect to home and logged in
       err => {
