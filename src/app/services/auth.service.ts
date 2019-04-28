@@ -8,6 +8,7 @@ export class AuthService {
   private __apiUrl = "http://localhost:3000"
   private _customerSignUpUrl = `${this.__apiUrl}/api/customer/signup`
   private _customerLogInUrl = `${this.__apiUrl}/api/customer/login`
+  private _tableBookingUrl = `${this.__apiUrl}/api/customer/booking`
 
   constructor(private http: HttpClient) { }
 
@@ -29,5 +30,9 @@ export class AuthService {
 
   logOut() {
     localStorage.removeItem('token');
+  }
+
+  book(booking: any) {
+    return this.http.post<any>(this._tableBookingUrl, booking);
   }
 }

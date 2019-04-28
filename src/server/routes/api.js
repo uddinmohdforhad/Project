@@ -8,6 +8,7 @@ const db = "mongodb+srv://admin:zFGRKXn4aHKfKdX@myproject-k5h8e.mongodb.net/Proj
 /* import Models */
 const Staff = require('../models/staff')
 const Customer = require('../models/customer')
+const Booking = require('../models/booking')
  
 mongoose.connect(db, err => {
   if (err) {
@@ -191,7 +192,7 @@ router.post('/customer/login', (req, res) => {
   })
 })
 
-/* verify if customer has a valid token (if they are logged in) */
+/* verify if customer has a valid token (if they are logged in) Note: not implemented*/
 function verifyToken(req, res, next) {
   if (!req.headers.authorization) {
     return res.status(401).send('Unauthorized request');
@@ -207,5 +208,36 @@ function verifyToken(req, res, next) {
   req.userId = payload.subject;
   next();
 }
+
+router.post('/customer/booking', (req, res) => {
+  let bookingData = req.body
+
+  var customerId = "";
+
+  var token = bookingData.token;
+  var payload = jwt.verify(token, 'secretKey', function(err, payload){
+    if(err) res.status(401).send('Invalid token');
+
+    customerId = payload.subject;
+  });
+
+  Customer.findById(customerId, (error, customerObj) => {
+    if (error) res.status(401).send('Invalid customer id');
+
+    var newBooking = {
+      customerId: customerObj._id,
+      customerEmail: customerObj.email,
+      date: bookingData.date,
+      capacity: bookingData.capacity
+    }
+
+    var booking = new Booking(newBooking);
+    booking.save((error, newBooking) => {
+      if(error) res.status(500).send({success: false, message: 'error'});
+  
+      res.status(200).send({success: true, message: `Booking confirmed, your booking number is ${newBooking._id}`})
+    })
+  });
+})
 
 module.exports = router;
