@@ -1,19 +1,28 @@
 <mat-toolbar color="primary">
-  <button mat-icon-button [matMenuTriggerFor]="menu">
+  <div id="logo">
+    <h1>Saffron</h1>
+  </div>
+  <span class="spacer"></span>
+  <button mat-button class="nav-btn" routerLink="/log-in">
+    Log in
+  </button>
+  <button mat-button class="nav-btn" routerLink="/sign-up">
+    Sing up
+  </button>
+  <button mat-button [matMenuTriggerFor]="menu" class="nav-btn">
     <mat-icon>more_vert</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item>
-      <mat-icon>dialpad</mat-icon>
-      <span>Redial</span>
+    <p mat-menu-item disabled class="subnav-header" routerLink="/dashboard">Staff Dashboard</p>
+    <mat-divider></mat-divider>
+    <button mat-menu-item routerLink="/dashboard/staff-members">
+      <span>Staff List</span>
     </button>
-    <button mat-menu-item disabled>
-      <mat-icon>voicemail</mat-icon>
-      <span>Check voicemail</span>
+    <button mat-menu-item routerLink="/dashboard/register">
+      <span>Registration</span>
     </button>
-    <button mat-menu-item>
-      <mat-icon>notifications_off</mat-icon>
-      <span>Disable alerts</span>
+    <button mat-menu-item routerLink="/dashboard/logging">
+      <span>Log in</span>
     </button>
   </mat-menu>
 </mat-toolbar>

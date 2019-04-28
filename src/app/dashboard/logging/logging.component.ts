@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DashboardService } from 'src/app/services/dashboard.service';
 
 @Component({
@@ -9,7 +10,8 @@ import { DashboardService } from 'src/app/services/dashboard.service';
 export class StaffLoggingComponent implements OnInit {
 
   loginStaffData = { email:"", password: ""}
-  constructor(private _dashService: DashboardService) { }
+  constructor(private _dashService: DashboardService,
+              private _router: Router) { }
 
   ngOnInit() {
   }
@@ -19,9 +21,13 @@ export class StaffLoggingComponent implements OnInit {
     .subscribe(
       res => {
         console.log(res),
-        localStorage.setItem('token', res.token)
+        localStorage.setItem('token', res.token),
+        this._router.navigate(['/dashboard'])
       },
-      err => console.log(err)
+      err => {
+        console.log(err),
+        alert(`Error: invalid email or password`)
+      }
      )
   }
 }

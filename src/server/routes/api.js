@@ -169,6 +169,7 @@ router.post('/customer/signup', (req, res) => {
   })
 })
 
+/* customer log in */
 router.post('/customer/login', (req, res) => {
   let customerData = req.body
 
@@ -189,5 +190,22 @@ router.post('/customer/login', (req, res) => {
      }
   })
 })
+
+/* verify if customer has a valid token (if they are logged in) */
+function verifyToken(req, res, next) {
+  if (!req.headers.authorization) {
+    return res.status(401).send('Unauthorized request');
+  }
+  let token = req.headers.authorization.split(' ')[1];
+  if (token === 'null') {
+    return res.status(401).send('Unauthorized request');
+  }
+  let payload = jwt.verify(token, 'secretKey');
+  if (!payload) {
+    return res.status(401).send('Unauthorized request');
+  }
+  req.userId = payload.subject;
+  next();
+}
 
 module.exports = router;
