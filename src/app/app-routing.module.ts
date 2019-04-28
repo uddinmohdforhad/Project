@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AuthGuard } from './services/auth.guard';
+import { DashboardGuard } from './services/dashboard.guard';
 
 import { StaffLoggingComponent } from './dashboard/logging/logging.component'
 import { StaffMembersComponent } from './dashboard/staff-members/staff-members.component';
@@ -17,12 +18,12 @@ const routes: Routes = [
   { 
     path: 'dashboard',
     component: DashboardComponent,
-    canActivate: [AuthGuard]
+    canActivate: [DashboardGuard]
   },
   {
     path: 'dashboard/register',
     component: RegistrationComponent,
-    canActivate: [AuthGuard]
+    canActivate: [DashboardGuard]
   },
   {
     path: 'dashboard/logging',
@@ -31,12 +32,12 @@ const routes: Routes = [
   {
     path: 'dashboard/staff-members/:id',
     component: MembersDetailsComponent,
-    canActivate: [AuthGuard]
+    canActivate: [DashboardGuard]
   },
   {
     path: 'dashboard/staff-members',
     component: StaffMembersComponent,
-    canActivate: [AuthGuard]
+    canActivate: [DashboardGuard]
   },
   { 
     path: '',

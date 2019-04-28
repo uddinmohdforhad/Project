@@ -39,4 +39,16 @@ export class DashboardService {
   updateStaff(staff: any) {
     return this.http.post<any>(this._staffUpdateUrl, staff)
   }
+
+  loggedIn() {
+    return !!localStorage.getItem('StaffToken');
+  }
+
+  getToken() {
+    return localStorage.getItem('StaffToken');
+  }
+
+  logOut() {
+    localStorage.removeItem('StaffToken');
+  }
 }
