@@ -4,15 +4,16 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './services/auth.guard';
 import { DashboardGuard } from './services/dashboard.guard';
 
+import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { StaffLoggingComponent } from './dashboard/logging/logging.component'
 import { StaffMembersComponent } from './dashboard/staff-members/staff-members.component';
 import { RegistrationComponent } from './dashboard/registration/registration.component';
 import { MembersDetailsComponent } from './dashboard/staff-members/members-details/members-details.component';
 
+import { HomepageComponent } from './website/homepage/homepage.component';
 import { SignUpComponent } from './website/sign-up/sign-up.component';
 import { LoginComponent } from './website/login/login.component';
-import { HomepageComponent } from './website/homepage/homepage.component';
-import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
+import { BookingComponent } from './website/booking/booking.component';
 
 const routes: Routes = [
   { 
@@ -50,6 +51,11 @@ const routes: Routes = [
   {
     path: 'log-in',
     component: LoginComponent
+  },
+  {
+    path: 'book-table',
+    component: BookingComponent,
+    canActivate: [AuthGuard]
   },
 ];
 

@@ -23,6 +23,7 @@ import { SignUpComponent } from './website/sign-up/sign-up.component';
 import { LoginComponent } from './website/login/login.component';
 import { HomepageComponent } from './website/homepage/homepage.component';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
+import { BookingComponent } from './website/booking/booking.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
     SignUpComponent,
     LoginComponent,
     HomepageComponent,
-    DashboardComponent
+    DashboardComponent,
+    BookingComponent
   ],
   imports: [
     BrowserModule,
