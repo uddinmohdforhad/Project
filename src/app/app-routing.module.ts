@@ -14,6 +14,7 @@ import { HomepageComponent } from './website/homepage/homepage.component';
 import { SignUpComponent } from './website/sign-up/sign-up.component';
 import { LoginComponent } from './website/login/login.component';
 import { BookingComponent } from './website/booking/booking.component';
+import { MyBookingsComponent } from './website/my-bookings/my-bookings.component';
 
 const routes: Routes = [
   { 
@@ -55,6 +56,11 @@ const routes: Routes = [
   {
     path: 'book-table',
     component: BookingComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'my-bookings',
+    component: MyBookingsComponent,
     canActivate: [AuthGuard]
   },
 ];
