@@ -216,13 +216,13 @@ router.post('/customer/booking', (req, res) => {
 
   var token = bookingData.token;
   var payload = jwt.verify(token, 'secretKey', function(err, payload){
-    if(err) res.status(401).send('Invalid token');
+    if(err) res.status(401).send({success: false, message: 'Invalid token'});
 
     customerId = payload.subject;
   });
 
   Customer.findById(customerId, (error, customerObj) => {
-    if (error) res.status(401).send('Invalid customer id');
+    if (error) res.status(401).send({success: false, message: 'Invalid customer id'});
 
     var newBooking = {
       customerId: customerObj._id,
@@ -235,7 +235,7 @@ router.post('/customer/booking', (req, res) => {
     booking.save((error, newBooking) => {
       if(error) res.status(500).send({success: false, message: 'error'});
   
-      res.status(200).send({success: true, message: `Booking confirmed, your booking number is ${newBooking._id}`})
+      res.status(200).send({success: true, message: `${newBooking.customerEmail}, your booking is confirmed, your booking number is ${newBooking._id}`})
     })
   });
 })
