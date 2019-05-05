@@ -18,7 +18,6 @@ export class HeaderComponent implements OnInit {
     this._auth.getEmitter().subscribe(
       (customerObj) => {
         this.customer = customerObj
-        console.log(this.customer)
       })
   }
 

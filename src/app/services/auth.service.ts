@@ -43,7 +43,6 @@ export class AuthService {
         })
       },
       err => {
-        console.log(err)
         return this.fireIsLoggedIn.emit({
           isLoggedIn: false,
           email: ""
