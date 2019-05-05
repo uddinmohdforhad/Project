@@ -33,8 +33,8 @@ export class RegistrationComponent implements OnInit {
   createAccount() {
     this._dashService.addStaff(this.newStaffData)
     .subscribe(
-      res => console.log(res),
-      err => console.log(err)
+      res => alert("Staff was added"),
+      err => alert("error")
     )
   }
 }
