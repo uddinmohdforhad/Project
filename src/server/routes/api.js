@@ -192,22 +192,24 @@ router.post('/customer/login', (req, res) => {
   })
 })
 
-/* verify if customer has a valid token (if they are logged in) Note: not implemented*/
-function verifyToken(req, res, next) {
-  if (!req.headers.authorization) {
-    return res.status(401).send('Unauthorized request');
-  }
-  let token = req.headers.authorization.split(' ')[1];
-  if (token === 'null') {
-    return res.status(401).send('Unauthorized request');
-  }
-  let payload = jwt.verify(token, 'secretKey');
-  if (!payload) {
-    return res.status(401).send('Unauthorized request');
-  }
-  req.userId = payload.subject;
-  next();
-}
+router.post('/customer/verify-token', (req, res) => {
+  let Data = req.body
+  var token = Data.token
+
+  var customerId = "";
+
+  var payload = jwt.verify(token, 'secretKey', function(err, payload){
+    if(err) res.status(401).send({success: false, message: 'Invalid token'});
+
+    customerId = payload.subject;
+  });
+
+  Customer.findById(customerId, (error, customerObj) => {
+    if (error) res.status(401).send({success: false, message: 'Invalid customer id'});
+
+    res.status(200).send({success: true, customerObj})
+  });
+})
 
 router.post('/customer/booking', (req, res) => {
   let bookingData = req.body
