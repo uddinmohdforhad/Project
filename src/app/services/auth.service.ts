@@ -10,6 +10,7 @@ export class AuthService {
   private _customerLogInUrl = `${this.__apiUrl}/api/customer/login`
   private _tableBookingUrl = `${this.__apiUrl}/api/customer/booking`
   private _verifyToken = `${this.__apiUrl}/api/customer/verify-token`
+  private _getMyBookings = `${this.__apiUrl}/api/customer/getBookings`
 
 
   @Output() fireIsLoggedIn: EventEmitter<any> = new EventEmitter<any>();
@@ -61,5 +62,9 @@ export class AuthService {
 
   book(booking: any) {
     return this.http.post<any>(this._tableBookingUrl, booking);
+  }
+
+  getMyBookings(){
+    return this.http.post<any>(this._getMyBookings, {token: this.getToken()})
   }
 }

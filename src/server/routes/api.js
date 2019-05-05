@@ -242,4 +242,28 @@ router.post('/customer/booking', (req, res) => {
   });
 })
 
+router.post('/customer/getBookings', (req, res) => {
+  let bookingData = req.body
+
+  var customerId = "";
+
+  var token = bookingData.token;
+  var payload = jwt.verify(token, 'secretKey', function(err, payload){
+    if(err) res.status(401).send({success: false, message: 'Invalid token'});
+
+    customerId = payload.subject;
+  });
+
+  Booking.find({ customerId: customerId }, (error, customerBookings) => {
+    if (error) {
+      console.log(error)
+    } else
+    if (!customerBookings) {
+      res.status(401).send('no bookings')
+    } else {
+      res.status(200).send(customerBookings)
+    }
+  })
+})
+
 module.exports = router;
