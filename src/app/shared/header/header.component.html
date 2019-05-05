@@ -3,10 +3,14 @@
     <h1>Saffron</h1>
   </div>
   <span class="spacer"></span>
-  <button mat-button class="nav-btn" routerLink="/log-in">
+  <button mat-button [matMenuTriggerFor]="customerMenu" class="nav-btn" *ngIf="customer.isLoggedIn">
+    {{ customer.email }}
+  </button>
+  
+  <button mat-button class="nav-btn" routerLink="/log-in" *ngIf="!customer.isLoggedIn">
     Log in
   </button>
-  <button mat-button class="nav-btn" routerLink="/sign-up">
+  <button mat-button class="nav-btn" routerLink="/sign-up" *ngIf="!customer.isLoggedIn">
     Sing up
   </button>
   <button mat-button [matMenuTriggerFor]="menu" class="nav-btn">
@@ -23,6 +27,21 @@
     </button>
     <button mat-menu-item routerLink="/dashboard/logging">
       <span>Log in</span>
+    </button>
+  </mat-menu>
+  <mat-menu #customerMenu="matMenu">
+    <button mat-menu-item routerLink="/book-table">
+      <span>Book table</span>
+    </button>
+    <button mat-menu-item routerLink="/book-table">
+      <span>My bookings</span>
+    </button>
+    <button mat-menu-item routerLink="/book-table">
+      <span>Order</span>
+    </button>
+    <mat-divider></mat-divider>
+    <button mat-menu-item (click)="logOut()">
+      Log out
     </button>
   </mat-menu>
 </mat-toolbar>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  customer = {
+    isLoggedIn: false,
+    email: ""
+  }
+  constructor(private _auth: AuthService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    this._auth.getEmitter().subscribe(
+      (customerObj) => {
+        this.customer = customerObj
+        console.log(this.customer)
+      })
   }
 
+  logOut(){
+    this._auth.logOut();
+    this._auth.emitLogin();
+  }
 }

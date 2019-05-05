@@ -23,9 +23,9 @@ export class LoginComponent implements OnInit {
     this._auth.logIn(this.customerData)
     .subscribe(
       res => {
-        console.log(res),
         localStorage.setItem('token', res.token)
         alert('You have registered successfully')
+        this._auth.emitLogin();
         this._router.navigate([''])
       },// redirect to home and logged in
       err => {
