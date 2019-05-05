@@ -44,6 +44,8 @@ export class SignUpComponent implements OnInit {
         res => {
           console.log(res)
           localStorage.setItem('token', res.token);
+          alert('You have registered successfully')
+          this._authService.emitLogin();
           this._router.navigate([''])
         },// redirect to home and logged in
         err => {

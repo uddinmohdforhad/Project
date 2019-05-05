@@ -24,12 +24,12 @@ export class LoginComponent implements OnInit {
     .subscribe(
       res => {
         localStorage.setItem('token', res.token)
-        alert('You have registered successfully')
+        alert('You have logged in successfully')
         this._auth.emitLogin();
         this._router.navigate([''])
       },// redirect to home and logged in
       err => {
-        alert(`Error: ${err.error.message}`)
+        alert(`Error: invalid email or password`)
       }
     )
   }
