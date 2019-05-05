@@ -1,3 +1,25 @@
-<p>
-  booking works!
-</p>
+<section id="BookPage">
+    <mat-card class="bookingCard">
+      <mat-card-header>
+        <mat-card-title class="bookingCard-title">
+          <mat-icon color="primary" class="bookingCard-icon">book</mat-icon>
+          Book your table in advance
+        </mat-card-title>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <form class="bookingCard-form">
+        <mat-form-field class="bookingCard-input">
+          <input [(ngModel)]="bookingData.capacity" name="capacity" type="text" matInput placeholder="Number of people">
+        </mat-form-field>
+        <mat-form-field class="bookingCard-input">
+          <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="bookingData.date" [ngModelOptions]="{standalone: true}">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </form>
+      <mat-divider></mat-divider>
+      <mat-card-actions class="bookingCard-action">
+        <button (click)="booktable()" mat-raised-button color="primary" class="bookingCard-button-primary">Book now</button>
+      </mat-card-actions>
+    </mat-card>
+  </section>

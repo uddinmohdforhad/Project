@@ -1,0 +1,32 @@
+.bookingCard {
+    max-width: 450px;
+    margin: 30px auto;
+}
+
+.bookingCard-title {
+    display: flex;
+    align-items: center;
+}
+.bookingCard-icon {
+    padding-right: 10px;
+}
+.bookingCard-subtitle {
+    margin-bottom: 0;
+}
+
+.bookingCard-form {
+    margin-top: 1.25em;
+}
+.bookingCard-input {
+    display: block;
+}
+
+.bookingCard-action {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+.bookingCard-button-primary {
+    font-size: 16px;
+}
