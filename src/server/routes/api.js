@@ -267,6 +267,18 @@ router.post('/customer/getBookings', (req, res) => {
   })
 })
 
+router.post('/customer/getBooking', (req, res) => {
+  let bookingData = req.body
+
+  var bookingId = bookingData._id
+
+  Booking.findById(bookingId, (error, booking) => {
+    if (error) console.log(error)
+    else if (!booking) res.status(401).send({success: false, message: `booking (id: ${id}) not found`});
+    else res.status(200).send({success: true, booking})
+  })
+})
+
 router.post('/customer/order', (req, res) => {
   let orderData = req.body
 

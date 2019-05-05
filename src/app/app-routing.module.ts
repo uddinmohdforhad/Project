@@ -15,6 +15,7 @@ import { SignUpComponent } from './website/sign-up/sign-up.component';
 import { LoginComponent } from './website/login/login.component';
 import { BookingComponent } from './website/booking/booking.component';
 import { MyBookingsComponent } from './website/my-bookings/my-bookings.component';
+import { OrderComponent } from './website/order/order.component';
 
 const routes: Routes = [
   { 
@@ -63,6 +64,15 @@ const routes: Routes = [
     component: MyBookingsComponent,
     canActivate: [AuthGuard]
   },
+  {
+    path: 'order/:bookId',
+    component: OrderComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: '**',
+    redirectTo: ''
+  }
 ];
 
 @NgModule({

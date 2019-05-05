@@ -25,6 +25,7 @@ import { HomepageComponent } from './website/homepage/homepage.component';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { BookingComponent } from './website/booking/booking.component';
 import { MyBookingsComponent } from './website/my-bookings/my-bookings.component';
+import { OrderComponent } from './website/order/order.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { MyBookingsComponent } from './website/my-bookings/my-bookings.component
     HomepageComponent,
     DashboardComponent,
     BookingComponent,
-    MyBookingsComponent
+    MyBookingsComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,
