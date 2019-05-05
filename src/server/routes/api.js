@@ -9,6 +9,7 @@ const db = "mongodb+srv://admin:zFGRKXn4aHKfKdX@myproject-k5h8e.mongodb.net/Proj
 const Staff = require('../models/staff')
 const Customer = require('../models/customer')
 const Booking = require('../models/booking')
+const Order = require('../models//order')
  
 mongoose.connect(db, err => {
   if (err) {
@@ -262,6 +263,20 @@ router.post('/customer/getBookings', (req, res) => {
       res.status(401).send('no bookings')
     } else {
       res.status(200).send(customerBookings)
+    }
+  })
+})
+
+router.post('/customer/order', (req, res) => {
+  let orderData = req.body
+
+  var newOrder = new Order(orderData)
+  console.log(newOrder)
+  newOrder.save((error, order) => {
+    if (error) { 
+      res.status(500).send(error)
+    } else {
+      res.status(200).send({success: true, order})
     }
   })
 })

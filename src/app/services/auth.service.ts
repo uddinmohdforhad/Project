@@ -11,6 +11,7 @@ export class AuthService {
   private _tableBookingUrl = `${this.__apiUrl}/api/customer/booking`
   private _verifyToken = `${this.__apiUrl}/api/customer/verify-token`
   private _getMyBookings = `${this.__apiUrl}/api/customer/getBookings`
+  private _orderUrl = `${this.__apiUrl}/api/customer/order`
 
 
   @Output() fireIsLoggedIn: EventEmitter<any> = new EventEmitter<any>();
@@ -66,5 +67,9 @@ export class AuthService {
 
   getMyBookings(){
     return this.http.post<any>(this._getMyBookings, {token: this.getToken()})
+  }
+
+  takeOrder(order: any) {
+    return this.http.post<any>(this._orderUrl, order);
   }
 }
