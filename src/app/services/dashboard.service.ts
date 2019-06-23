@@ -79,4 +79,14 @@ export class DashboardService {
       }
     )
   }
+
+  isAdmin(): boolean {
+    var response = false;
+    this.http.post<any>(this._verifyToken, {token: this.getToken()})
+    .subscribe(res => {
+        var staffObj = res.staffObj
+        response = staffObj.isAdmin
+      })
+    return response;
+  }
 }

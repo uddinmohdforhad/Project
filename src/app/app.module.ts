@@ -12,6 +12,7 @@ import { DashboardService } from './services/dashboard.service';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth.guard';
 import { DashboardAuthGuard } from './services/dashboard-auth.guard'
+import { DashboardRoleGuard } from './services/dashboard-role.guard';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 
 import { WebHeaderComponent } from './shared/webheader/webheader.component';
@@ -68,6 +69,7 @@ import { AppWebComponent } from './website/app-web/app-web.component';
     AuthService,
     AuthGuard,
     DashboardAuthGuard,
+    DashboardRoleGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
