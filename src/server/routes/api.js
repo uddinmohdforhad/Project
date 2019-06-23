@@ -79,6 +79,25 @@ router.post('/staff/login', (req, res) => {
   })
 })
 
+router.post('/staff/verify-token', (req, res) => {
+  let Data = req.body
+  var token = Data.token
+
+  var staffId = "";
+
+  var payload = jwt.verify(token, 'secretKey', function(err, payload){
+    if(err) res.status(401).send({success: false, message: 'Invalid token'});
+
+    staffId = payload.subject;
+  });
+
+  Staff.findById(staffId, (error, staffObj) => {
+    if (error) res.status(401).send({success: false, message: 'Invalid staff id'});
+
+    res.status(200).send({success: true, staffObj})
+  });
+})
+
 /* Get All Staff */
 router.get('/staff/getAll', (req, res) => {
   findStaff("", res)

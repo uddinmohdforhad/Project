@@ -1,17 +1,15 @@
 <mat-toolbar color="primary">
-  <div id="logo">
+  <div id="logo" routerLink="/">
     <h1>Saffron</h1>
   </div>
   <span class="spacer"></span>
-  <button mat-button [matMenuTriggerFor]="customerMenu" class="nav-btn" *ngIf="customer.isLoggedIn">
-    {{ customer.email }}
+
+  <button mat-button [matMenuTriggerFor]="customerMenu" class="nav-btn" *ngIf="staff.isLoggedIn">
+    {{ staff.email }}
   </button>
   
-  <button mat-button class="nav-btn" routerLink="/log-in" *ngIf="!customer.isLoggedIn">
+  <button mat-button class="nav-btn" routerLink="/dashboard/logging" *ngIf="!staff.isLoggedIn">
     Log in
-  </button>
-  <button mat-button class="nav-btn" routerLink="/sign-up" *ngIf="!customer.isLoggedIn">
-    Sign up
   </button>
   <button mat-button [matMenuTriggerFor]="menu" class="nav-btn">
     <mat-icon>more_vert</mat-icon>
@@ -30,6 +28,8 @@
     </button>
   </mat-menu>
   <mat-menu #customerMenu="matMenu">
+    <p mat-menu-item disabled class="subnav-header" routerLink="/dashboard">Role: <span class="red-text">{{ isAdmin() }}</span></p>
+    <mat-divider></mat-divider>
     <button mat-menu-item routerLink="/book-table">
       <span>Book table</span>
     </button>

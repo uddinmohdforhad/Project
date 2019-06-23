@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
+import { DashboardService } from 'src/app/services/dashboard.service';
 
 @Component({
   selector: 'dashboard-header',
@@ -8,21 +8,30 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class DashboardHeaderComponent implements OnInit {
 
-  customer = {
+  staff = {
     isLoggedIn: false,
-    email: ""
+    email: "",
+    isAdmin: false
   }
-  constructor(private _auth: AuthService) { }
+  constructor(private _dashService: DashboardService) { }
 
   async ngOnInit() {
-    this._auth.getEmitter().subscribe(
-      (customerObj) => {
-        this.customer = customerObj
+    this._dashService.emitLogin();
+    this._dashService.getEmitter().subscribe(
+      (staffObj) => {
+        this.staff = staffObj
       })
   }
 
+  isAdmin(): string {
+    if(this.staff.isAdmin)
+      return "Admin"
+    else
+      return "Staff"
+  }
+
   logOut(){
-    this._auth.logOut();
-    this._auth.emitLogin();
+    this._dashService.logOut();
+    this._dashService.emitLogin();
   }
 }

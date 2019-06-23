@@ -15,6 +15,7 @@ export class WebHeaderComponent implements OnInit {
   constructor(private _auth: AuthService) { }
 
   async ngOnInit() {
+    this._auth.emitLogin();
     this._auth.getEmitter().subscribe(
       (customerObj) => {
         this.customer = customerObj

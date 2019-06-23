@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -8,11 +8,14 @@ export class DashboardService {
   
   private __apiUrl = "http://localhost:3000"    
   private _staffLoginUrl = `${this.__apiUrl}/api/staff/login`
+  private _verifyToken = `${this.__apiUrl}/api/staff/verify-token`
   private _staffListUrl = `${this.__apiUrl}/api/staff/getAll`
   private _staffRegister = `${this.__apiUrl}/api/staff/register`
   private _staffGetById = `${this.__apiUrl}/api/staff/getById`
   private _staffRemoveUrl = `${this.__apiUrl}/api/staff/remove`
   private _staffUpdateUrl = `${this.__apiUrl}/api/staff/update`
+
+  @Output() fireIsLoggedIn: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private http: HttpClient) { }
 
@@ -50,5 +53,30 @@ export class DashboardService {
 
   logOut() {
     localStorage.removeItem('StaffToken');
+  }
+
+  getEmitter() {
+    return this.fireIsLoggedIn;
+  }
+
+  emitLogin() {
+    this.http.post<any>(this._verifyToken, {token: this.getToken()})
+    .subscribe(
+      res => {
+        var staffObj = res.staffObj
+        return this.fireIsLoggedIn.emit({
+          isLoggedIn: true,
+          email: staffObj.email,
+          isAdmin: staffObj.isAdmin
+        })
+      },
+      err => {
+        return this.fireIsLoggedIn.emit({
+          isLoggedIn: false,
+          email: "",
+          isAdmin: false
+        })
+      }
+    )
   }
 }

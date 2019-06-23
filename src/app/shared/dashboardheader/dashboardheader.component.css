@@ -16,3 +16,6 @@
 .subnav-header:hover {
     cursor: pointer;
 }
+.red-text {
+    color: red;
+}

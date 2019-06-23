@@ -22,6 +22,7 @@ export class StaffLoggingComponent implements OnInit {
       res => {
         console.log(res),
         localStorage.setItem('StaffToken', res.token),
+        this._dashService.emitLogin();
         this._router.navigate(['/dashboard'])
       },
       err => {
