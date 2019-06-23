@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DashboardService } from 'src/app/services/dashboard.service';
 
 @Component({
@@ -13,7 +14,8 @@ export class DashboardHeaderComponent implements OnInit {
     email: "",
     isAdmin: false
   }
-  constructor(private _dashService: DashboardService) { }
+  constructor(private _dashService: DashboardService,
+              private _router: Router) { }
 
   async ngOnInit() {
     this._dashService.emitLogin();
@@ -33,5 +35,6 @@ export class DashboardHeaderComponent implements OnInit {
   logOut(){
     this._dashService.logOut();
     this._dashService.emitLogin();
+    this._router.navigate(['/dashboard/logging']);
   }
 }

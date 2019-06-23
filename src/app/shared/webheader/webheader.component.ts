@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -12,7 +13,8 @@ export class WebHeaderComponent implements OnInit {
     isLoggedIn: false,
     email: ""
   }
-  constructor(private _auth: AuthService) { }
+  constructor(private _auth: AuthService,
+              private _router: Router) { }
 
   async ngOnInit() {
     this._auth.emitLogin();
@@ -25,5 +27,6 @@ export class WebHeaderComponent implements OnInit {
   logOut(){
     this._auth.logOut();
     this._auth.emitLogin();
+    this._router.navigate(['/'])
   }
 }
