@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AuthGuard } from './services/auth.guard';
-import { DashboardGuard } from './services/dashboard.guard';
+import { DashboardAuthGuard } from './services/dashboard-auth.guard';
 
 import { AppDashboardComponent } from './dashboard/app-dashboard/app-dashboard.component';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
@@ -23,12 +23,12 @@ const dashboard_routes: Routes = [
   { 
     path: 'dashboard',
     component: DashboardComponent,
-    canActivate: [DashboardGuard]
+    canActivate: [DashboardAuthGuard]
   },
   {
     path: 'dashboard/register',
     component: RegistrationComponent,
-    canActivate: [DashboardGuard]
+    canActivate: [DashboardAuthGuard]
   },
   {
     path: 'dashboard/logging',
@@ -37,12 +37,12 @@ const dashboard_routes: Routes = [
   {
     path: 'dashboard/staff-members/:id',
     component: MembersDetailsComponent,
-    canActivate: [DashboardGuard]
+    canActivate: [DashboardAuthGuard]
   },
   {
     path: 'dashboard/staff-members',
     component: StaffMembersComponent,
-    canActivate: [DashboardGuard]
+    canActivate: [DashboardAuthGuard]
   }
 ]
 

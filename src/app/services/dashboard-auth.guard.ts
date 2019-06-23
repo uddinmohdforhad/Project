@@ -6,7 +6,7 @@ import { DashboardService } from './dashboard.service'
 @Injectable({
   providedIn: 'root'
 })
-export class DashboardGuard implements CanActivate {
+export class DashboardAuthGuard implements CanActivate {
 
   constructor(private _dashService: DashboardService,
               private _router: Router) 

@@ -11,6 +11,7 @@ import { CustomMaterialModule } from './custom-material.module';
 import { DashboardService } from './services/dashboard.service';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth.guard';
+import { DashboardAuthGuard } from './services/dashboard-auth.guard'
 import { TokenInterceptorService } from './services/token-interceptor.service';
 
 import { WebHeaderComponent } from './shared/webheader/webheader.component';
@@ -66,6 +67,7 @@ import { AppWebComponent } from './website/app-web/app-web.component';
     DashboardService,
     AuthService,
     AuthGuard,
+    DashboardAuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
