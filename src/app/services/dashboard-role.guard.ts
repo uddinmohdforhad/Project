@@ -12,22 +12,23 @@ export class DashboardRoleGuard implements CanActivate {
               private _router: Router) 
   { }
 
-  canActivate(): boolean {
-    var isLoggedIn = this._dashService.loggedIn();
-    
-    if(!isLoggedIn) {
+  async canActivate() {
+    return this._dashService.isAdmin().toPromise().then(
+      res => {
+        var staffObj = res.staffObj
+        var isAdmin = staffObj.isAdmin
+        if (isAdmin){
+          return true;
+        }
+        else {
+          alert("Only admins allowed on this page.")
+          this._router.navigate(['/dashboard'])
+          return false;
+        }
+      }
+    ).catch(err => {
       this._router.navigate(['/dashboard/logging'])
       return false;
-    } 
-
-    var isAdmin = this._dashService.isAdmin();
-    if (isAdmin){
-      return true;
-    }
-    else {
-      alert("Only admins allowed on this page.")
-      this._router.navigate(['/dashboard'])
-      return false;
-    }
+    })
   }
 }
