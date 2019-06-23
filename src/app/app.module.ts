@@ -26,6 +26,8 @@ import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { BookingComponent } from './website/booking/booking.component';
 import { MyBookingsComponent } from './website/my-bookings/my-bookings.component';
 import { OrderComponent } from './website/order/order.component';
+import { AppDashboardComponent } from './dashboard/app-dashboard/app-dashboard.component';
+import { AppWebComponent } from './website/app-web/app-web.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { OrderComponent } from './website/order/order.component';
     DashboardComponent,
     BookingComponent,
     MyBookingsComponent,
-    OrderComponent
+    OrderComponent,
+    AppDashboardComponent,
+    AppWebComponent
   ],
   imports: [
     BrowserModule,

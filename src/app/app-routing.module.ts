@@ -4,12 +4,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './services/auth.guard';
 import { DashboardGuard } from './services/dashboard.guard';
 
+import { AppDashboardComponent } from './dashboard/app-dashboard/app-dashboard.component';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { StaffLoggingComponent } from './dashboard/logging/logging.component'
 import { StaffMembersComponent } from './dashboard/staff-members/staff-members.component';
 import { RegistrationComponent } from './dashboard/registration/registration.component';
 import { MembersDetailsComponent } from './dashboard/staff-members/members-details/members-details.component';
 
+import { AppWebComponent } from './website/app-web/app-web.component';
 import { HomepageComponent } from './website/homepage/homepage.component';
 import { SignUpComponent } from './website/sign-up/sign-up.component';
 import { LoginComponent } from './website/login/login.component';
@@ -17,7 +19,7 @@ import { BookingComponent } from './website/booking/booking.component';
 import { MyBookingsComponent } from './website/my-bookings/my-bookings.component';
 import { OrderComponent } from './website/order/order.component';
 
-const routes: Routes = [
+const dashboard_routes: Routes = [
   { 
     path: 'dashboard',
     component: DashboardComponent,
@@ -41,7 +43,10 @@ const routes: Routes = [
     path: 'dashboard/staff-members',
     component: StaffMembersComponent,
     canActivate: [DashboardGuard]
-  },
+  }
+]
+
+const web_routes: Routes = [
   { 
     path: '',
     component: HomepageComponent,
@@ -68,11 +73,13 @@ const routes: Routes = [
     path: 'order/:bookId',
     component: OrderComponent,
     canActivate: [AuthGuard]
-  },
-  {
-    path: '**',
-    redirectTo: ''
   }
+]
+
+const routes: Routes = [
+  { path: '', component: AppWebComponent, data: { title: 'Customer\'s Website' }, children: web_routes },
+  { path: '', component: AppDashboardComponent, data: { title: 'Staff dashboard' }, children: dashboard_routes },
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
