@@ -1,0 +1,18 @@
+#logo h1 {
+    font-family: 'Kaushan Script', cursive;
+    font-size: 34px;
+    color: #fff;
+}
+.nav-btn {
+    font-size: 18px;
+}
+.spacer {
+    flex: 1 1 auto;
+}
+.subnav-header {
+    margin: 0;
+    color: #000;
+}
+.subnav-header:hover {
+    cursor: pointer;
+}

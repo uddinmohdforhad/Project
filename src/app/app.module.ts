@@ -14,6 +14,7 @@ import { AuthGuard } from './services/auth.guard';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 
 import { WebHeaderComponent } from './shared/webheader/webheader.component';
+import { DashboardHeaderComponent } from './shared/dashboardheader/dashboardheader.component';
 import { StaffLoggingComponent } from './dashboard/logging/logging.component';
 import { StaffMembersComponent } from './dashboard/staff-members/staff-members.component';
 import { RegistrationComponent } from './dashboard/registration/registration.component';
@@ -33,6 +34,7 @@ import { AppWebComponent } from './website/app-web/app-web.component';
   declarations: [
     AppComponent,
     WebHeaderComponent,
+    DashboardHeaderComponent,
     StaffLoggingComponent,
     StaffMembersComponent,
     RegistrationComponent,

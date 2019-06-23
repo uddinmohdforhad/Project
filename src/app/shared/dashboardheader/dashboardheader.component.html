@@ -1,0 +1,44 @@
+<mat-toolbar color="primary">
+  <div id="logo">
+    <h1>Saffron</h1>
+  </div>
+  <span class="spacer"></span>
+  <button mat-button [matMenuTriggerFor]="customerMenu" class="nav-btn" *ngIf="customer.isLoggedIn">
+    {{ customer.email }}
+  </button>
+  
+  <button mat-button class="nav-btn" routerLink="/log-in" *ngIf="!customer.isLoggedIn">
+    Log in
+  </button>
+  <button mat-button class="nav-btn" routerLink="/sign-up" *ngIf="!customer.isLoggedIn">
+    Sign up
+  </button>
+  <button mat-button [matMenuTriggerFor]="menu" class="nav-btn">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <p mat-menu-item disabled class="subnav-header" routerLink="/dashboard">Staff Dashboard</p>
+    <mat-divider></mat-divider>
+    <button mat-menu-item routerLink="/dashboard/staff-members">
+      <span>Staff List</span>
+    </button>
+    <button mat-menu-item routerLink="/dashboard/register">
+      <span>Registration</span>
+    </button>
+    <button mat-menu-item routerLink="/dashboard/logging">
+      <span>Log in</span>
+    </button>
+  </mat-menu>
+  <mat-menu #customerMenu="matMenu">
+    <button mat-menu-item routerLink="/book-table">
+      <span>Book table</span>
+    </button>
+    <button mat-menu-item routerLink="/my-bookings">
+      <span>My bookings</span>
+    </button>
+    <mat-divider></mat-divider>
+    <button mat-menu-item (click)="logOut()">
+      Log out
+    </button>
+  </mat-menu>
+</mat-toolbar>
