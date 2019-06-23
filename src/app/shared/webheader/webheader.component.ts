@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  selector: 'web-header',
+  templateUrl: './webheader.component.html',
+  styleUrls: ['./webheader.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class WebHeaderComponent implements OnInit {
 
   customer = {
     isLoggedIn: false,

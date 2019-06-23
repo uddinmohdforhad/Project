@@ -13,7 +13,7 @@ import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth.guard';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 
-import { HeaderComponent } from './shared/header/header.component';
+import { WebHeaderComponent } from './shared/webheader/webheader.component';
 import { StaffLoggingComponent } from './dashboard/logging/logging.component';
 import { StaffMembersComponent } from './dashboard/staff-members/staff-members.component';
 import { RegistrationComponent } from './dashboard/registration/registration.component';
@@ -32,7 +32,7 @@ import { AppWebComponent } from './website/app-web/app-web.component';
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
+    WebHeaderComponent,
     StaffLoggingComponent,
     StaffMembersComponent,
     RegistrationComponent,
