@@ -7,6 +7,7 @@ const cors = require('cors');
 
 // Get our API routes
 const api = require('./src/server/routes/api');
+const table_routes = require('./src/server/routes/table-routes');
 
 const app = express();
 app.use(cors());
@@ -19,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(__dirname + 'dist/Project'));
 
 // Set our api routes
-app.use('/api', api);
+app.use('/api', [api , table_routes]);
 
 // Catch all other routes and return the index file
 app.get('/*', (req, res) => {
