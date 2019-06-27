@@ -16,7 +16,7 @@ export interface BookingListData{
   styleUrls: ['./my-bookings.component.css']
 })
 export class MyBookingsComponent implements OnInit {
-  displayedColumns: string[] = ['date', 'time', 'tables', '_id'];
+  displayedColumns: string[] = ['date', 'time', 'tables', '_id', 'action'];
   dataSource: MatTableDataSource<BookingListData>;
   bookingList = []
 

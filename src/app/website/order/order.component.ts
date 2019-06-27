@@ -12,9 +12,12 @@ export interface MenuItem {
 }
 
 const MENULIST_DATA: MenuItem[] = [
-  {id: '1', name: 'Hydrogen', description: "1.0079", price: 2.50},
-  {id: '2', name: 'item 2', description: "1.0079", price: 12.50},
-  {id: '3', name: 'item 3', description: "1.0079", price: 3.50},
+  {id: '1', name: 'Korma', description: "A very mild, sweet creamy texture Very Mild", price: 12.50},
+  {id: '2', name: 'Chicken Tikka Masala', description: "Chicken barbecued, into a rich masala dish with cream", price: 12.50},
+  {id: '3', name: 'Madras', description: "A fairly hot consistency Fairly Hot", price: 11.50},
+  {id: '4', name: 'Chicken Tikka Starter', description: "Chicken pieces marinated & barbecued", price: 2.50},
+  {id: '5', name: 'Chilli Chicken', description: "Chicken with herbs & spices & fresh chillies", price: 12.50},
+  {id: '6', name: 'King Prawn Butterfly', description: "King prawns deep fried & battered", price: 3.50},
 ];
 
 @Component({
