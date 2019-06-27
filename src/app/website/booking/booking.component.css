@@ -30,3 +30,37 @@
 .bookingCard-button-primary {
     font-size: 16px;
 }
+
+.table-action {
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+.table-button-primary {
+    font-size: 24px;
+    padding: 10px;
+}
+
+table {
+    width: 100%;
+}
+
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+
+td, th {
+    width: 33%;
+}
+
+tr:hover {
+    cursor: pointer;
+    background-color: #eee;
+}
+
+#list {
+    margin: 10px auto;
+    width: 70%;
+}
