@@ -1,10 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import {MatPaginator, MatSort, MatTableDataSource, Sort} from '@angular/material';
+import { BookingService } from 'src/app/services/booking.service';
 
 export interface BookingListData{
   date: string,
-  capacity: string,
+  time: string,
+  tables: string,
   _id: string
 }
 
@@ -14,26 +16,59 @@ export interface BookingListData{
   styleUrls: ['./my-bookings.component.css']
 })
 export class MyBookingsComponent implements OnInit {
-  displayedColumns: string[] = ['date', 'capacity', '_id'];
+  displayedColumns: string[] = ['date', 'time', 'tables', '_id'];
   dataSource: MatTableDataSource<BookingListData>;
   bookingList = []
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private _auth: AuthService) { }
+  constructor(private _auth: AuthService,
+              private _bookingServece: BookingService) { }
 
   ngOnInit() {
-    this._auth.getMyBookings()
+    this._bookingServece.getMyBookings()
     .subscribe(
       res => {
-        this.bookingList = res
+        var resBookingList = []
+        resBookingList = res;
+        resBookingList.forEach(item => {
+          item.date = this.getBiutifyDateString(item.date);
+          item.time = this.getTimeValueFromKey(item.time);
+        })
+        this.bookingList = resBookingList
         this.dataSource = new MatTableDataSource(this.bookingList)
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
       },
       err => console.log(err)
     )
+  }
+
+  getBiutifyDateString(date: string){
+    var str = date;
+    return `${str.slice(0,4)}-${str.slice(4,6)}-${str.slice(6,8)}`
+  }
+
+  getTimeValueFromKey(key: string) {
+    switch(key){
+      case "five_six":
+        return "17:00";
+      case "six_seven":
+        return "18:00";
+      case "seven_eight":
+        return "19:00";
+      case "eight_nine":
+        return "20:00";
+      case "nine_ten":
+        return "21:00";
+      case "ten_eleven":
+        return "22:00";
+      case "eleven_twelve":
+        return "23:00";
+      default:
+        return ""
+    }
   }
 
   applyFilter(filterValue: string) {
@@ -55,7 +90,8 @@ export class MyBookingsComponent implements OnInit {
       const isAsc = sort.direction === 'asc';
       switch (sort.active) {
         case 'date': return compare(a.date, b.date, isAsc);
-        case 'capacity': return compare(a.capacity, b.capacity, isAsc);
+        case 'time': return compare(a.time, b.time, isAsc);
+        case 'tables': return compare(a.tables, b.tables, isAsc);
         case '_id': return compare(a._id, b._id, isAsc);
         default: return 0;
       }

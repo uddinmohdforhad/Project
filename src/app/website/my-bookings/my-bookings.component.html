@@ -13,9 +13,15 @@
         </ng-container>
 
         <!-- ID Column -->
-        <ng-container matColumnDef="capacity">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Capacity </th>
-          <td mat-cell *matCellDef="let row"> {{row.capacity}} </td>
+        <ng-container matColumnDef="time">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Time </th>
+          <td mat-cell *matCellDef="let row"> {{row.time}} </td>
+        </ng-container>
+
+        <!-- ID Column -->
+        <ng-container matColumnDef="tables">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Table Numbers </th>
+          <td mat-cell *matCellDef="let row"> {{row.tables}} </td>
         </ng-container>
 
           <!-- ID Column -->

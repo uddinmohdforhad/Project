@@ -23,7 +23,7 @@ export class BookingService {
   getMyBookings(){
     var body;
     body = {token: this.auth.getToken()}
-    return this.http.get<any>(this._getBookingsUrl, body)
+    return this.http.post<any>(this._getBookingsUrl, body)
   }
 
   getBookingById(booking: any){

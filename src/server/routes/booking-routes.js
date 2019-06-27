@@ -46,7 +46,7 @@ router.post('/customer/bookingV2', (req, res) => {
   });
 })
 
-router.get('/customer/getBookingsV2', (req, res) => {
+router.post('/customer/getBookingsV2', (req, res) => {
   let bookingData = req.body
 
   var customerId = "";
@@ -70,7 +70,7 @@ router.get('/customer/getBookingsV2', (req, res) => {
   })
 })
 
-router.get('/customer/getBookingV2', (req, res) => {
+router.post('/customer/getBookingV2', (req, res) => {
   let bookingData = req.body
 
   var bookingId = bookingData._id
