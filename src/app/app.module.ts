@@ -14,6 +14,8 @@ import { AuthGuard } from './services/auth.guard';
 import { DashboardAuthGuard } from './services/dashboard-auth.guard'
 import { DashboardRoleGuard } from './services/dashboard-role.guard';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { BookingService } from './services/booking.service';
+import { TableService } from './services/table.service';
 
 import { WebHeaderComponent } from './shared/webheader/webheader.component';
 import { DashboardHeaderComponent } from './shared/dashboardheader/dashboardheader.component';
@@ -67,6 +69,8 @@ import { AppWebComponent } from './website/app-web/app-web.component';
   providers: [
     DashboardService,
     AuthService,
+    BookingService,
+    TableService,
     AuthGuard,
     DashboardAuthGuard,
     DashboardRoleGuard,
