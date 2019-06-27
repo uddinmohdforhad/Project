@@ -27,6 +27,6 @@ export class BookingService {
   }
 
   getBookingById(booking: any){
-    return this.http.get<any>(this._getBookingUrl, booking);
+    return this.http.post<any>(this._getBookingUrl, booking);
   }
 }

@@ -8,10 +8,7 @@ export class AuthService {
   private __apiUrl = "http://localhost:3000"
   private _customerSignUpUrl = `${this.__apiUrl}/api/customer/signup`
   private _customerLogInUrl = `${this.__apiUrl}/api/customer/login`
-  private _tableBookingUrl = `${this.__apiUrl}/api/customer/booking`
   private _verifyToken = `${this.__apiUrl}/api/customer/verify-token`
-  private _getMyBookings = `${this.__apiUrl}/api/customer/getBookings`
-  private _getBookingById = `${this.__apiUrl}/api/customer/getBooking`
   private _orderUrl = `${this.__apiUrl}/api/customer/order`
 
 
@@ -60,18 +57,6 @@ export class AuthService {
 
   logOut() {
     localStorage.removeItem('token');
-  }
-
-  book(booking: any) {
-    return this.http.post<any>(this._tableBookingUrl, booking);
-  }
-
-  getMyBookings(){
-    return this.http.post<any>(this._getMyBookings, {token: this.getToken()})
-  }
-
-  getBookingById(booking: any){
-    return this.http.post<any>(this._getBookingById, booking);
   }
 
   takeOrder(order: any) {

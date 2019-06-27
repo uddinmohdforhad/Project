@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import {MatPaginator, MatSort, MatTableDataSource, Sort} from '@angular/material';
+import { BookingService } from 'src/app/services/booking.service';
 
 export interface MenuItem {
   id: string,
@@ -37,7 +38,8 @@ export class OrderComponent implements OnInit {
   constructor(
     private _router: Router,
     private _acctivatedRoute: ActivatedRoute,
-    private _auth: AuthService) { }
+    private _auth: AuthService,
+    private _bookingService: BookingService) { }
 
   ngOnInit() {
     this._acctivatedRoute.paramMap
@@ -46,7 +48,7 @@ export class OrderComponent implements OnInit {
       }
     );
     
-    this._auth.getBookingById(this.getBooking)
+    this._bookingService.getBookingById(this.getBooking)
       .subscribe(
         res => {
           var booking = res.booking
