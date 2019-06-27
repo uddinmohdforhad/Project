@@ -14,7 +14,6 @@ router.post("/tables/add", (req, res) => {
   {
     month = `0${today.getMonth()+1}`
   }
-  var month 
   var todayString = `${today.getFullYear()}${month}${today.getDate()}`
   table.availability[todayString] = { 
     five_six: true,
@@ -22,7 +21,8 @@ router.post("/tables/add", (req, res) => {
     seven_eight: true, 
     eight_nine: true, 
     nine_ten: true, 
-    ten_eleven: true
+    ten_eleven: true,
+    eleven_twelve: true
   }
 
   table.save((error, newTable) => {
@@ -69,7 +69,7 @@ router.get("/tables/getAll", (req, res) => {
   })
 })
 
-router.get("/tables/getByNumber", (req, res) => {
+router.post("/tables/getByNumber", (req, res) => {
   let tableData = req.body
   let tableNo = tableData.tableNo
 
@@ -86,7 +86,7 @@ router.get("/tables/getByNumber", (req, res) => {
 })
 
 //Get available tables ==> Given (date) and (time)
-router.get("/tables/getAvailableTables", (req, res) => {
+router.post("/tables/getAvailableTables", (req, res) => {
   let reqBody = req.body
   let date = reqBody.date
   let time = reqBody.time
@@ -112,7 +112,8 @@ router.get("/tables/getAvailableTables", (req, res) => {
             seven_eight: true, 
             eight_nine: true, 
             nine_ten: true, 
-            ten_eleven: true
+            ten_eleven: true,
+            eleven_twelve: true
           }
 
           //updated the table
