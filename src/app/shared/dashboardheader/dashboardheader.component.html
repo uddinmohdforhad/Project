@@ -30,12 +30,7 @@
   <mat-menu #customerMenu="matMenu">
     <p mat-menu-item disabled class="subnav-header" routerLink="/dashboard">Role: <span class="red-text">{{ isAdmin() }}</span></p>
     <mat-divider></mat-divider>
-    <button mat-menu-item routerLink="/book-table">
-      <span>Book table</span>
-    </button>
-    <button mat-menu-item routerLink="/my-bookings">
-      <span>My bookings</span>
-    </button>
+   
     <mat-divider></mat-divider>
     <button mat-menu-item (click)="logOut()">
       Log out

@@ -61,6 +61,10 @@ export class BookingComponent implements OnInit {
       res => {
         this.availableTables = res.availableTables;
         this.availableTables.forEach(item => item.isSelected = false)
+        
+        if(this.availableTables.length <= 0){
+          alert("No available tables at this time, please select a diferent date/time.")
+        }
 
         this.dataSource = new MatTableDataSource(this.availableTables)
         this.dataSource.paginator = this.paginator;
