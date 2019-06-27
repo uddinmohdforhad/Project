@@ -9,11 +9,13 @@ router.post("/tables/add", (req, res) => {
   let table = new Table(tableData)
   
   var today = new Date()
-  console.log(today);
-  console.log(today.getFullYear());
-  console.log(today.getMonth());
-  console.log(today.getDate());
-  var todayString = `${today.getFullYear()}${today.getMonth()+1}${today.getDate()}`
+  var month = (today.getMonth()+1).toString();
+  if(today.getMonth()+1 < 10)
+  {
+    month = `0${today.getMonth()+1}`
+  }
+  var month 
+  var todayString = `${today.getFullYear()}${month}${today.getDate()}`
   table.availability[todayString] = { 
     five_six: true,
     six_seven: true, 
@@ -99,7 +101,7 @@ router.get("/tables/getAvailableTables", (req, res) => {
       var availableTables = []
 
       tableList.forEach(table => {
-        //check the avail on date
+        //check the tableAvailability on date
         var currentAvailability = table.availability[date];
 
         if(currentAvailability == undefined) {
@@ -145,5 +147,35 @@ router.get("/tables/getAvailableTables", (req, res) => {
   })
 })
 
+// update tables availability when booking/canceling them
+router.post("/tables/updateTablesAvailability", (req, res) => {
+  let tableData = req.body
+  let tableList = [String];
+  tableList = tableData.tables
+  var date = tableData.date
+  var time = tableData.time
+  var updateAvailability = tableData.updateAvailability;
+
+  tableList.forEach(item => {
+    Table.findOne({ tableNo: item } ,(error, table) => {
+      if (error) { console.log(error) }
+      else if (!table) { console.log(`no table with number: ${item}`) } 
+      else {
+        var tableAvailability = table.availability[date]
+        tableAvailability[time] = updateAvailability
+        table.availability[date] = tableAvailability
+
+        Table.findOneAndUpdate({ tableNo: table.tableNo }, table, (error, table) => {
+          if (error) { console.log(error) }
+          else {
+            console.log(`table: ${table.tableNo} was booked`)
+          }
+        })
+      }
+    })
+  })
+
+  res.status(200).send({success: true, message: "Tables booked"})
+})
 
 module.exports = router;
