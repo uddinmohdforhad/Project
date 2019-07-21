@@ -1,0 +1,103 @@
+<section id="tableList">
+  <div *ngIf="listDisplayed">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" matSort (matSortChange)="sortData($event)">
+
+        <!-- Table No Column -->
+        <ng-container matColumnDef="tableNo">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Table No. </th>
+          <td mat-cell *matCellDef="let row"> {{row.tableNo}} </td>
+        </ng-container>
+
+        <!-- Capacity Column -->
+        <ng-container matColumnDef="capacity">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Capacity </th>
+          <td mat-cell *matCellDef="let row"> {{row.capacity}} </td>
+        </ng-container>
+
+        <!-- Acction Column -->
+        <ng-container matColumnDef="acction">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+          <td mat-cell *matCellDef="let row">
+            <div class="tableList-action">
+              <button (click)="deleteTable(row.tableNo)" mat-raised-button color="warn" class="tableList-action-button">Delete</button>
+              <button (click)="displayEditForm(row.tableNo, row.capacity)" mat-raised-button class="tableList-action-button">Edit</button>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"> <!--[routerLink]="[ '/dashboard/staff-members', row._id ]">-->
+        </tr>
+      </table>
+
+      <mat-paginator 
+        [pageSize]="10"
+        [pageSizeOptions]="[5,10,25,100]">
+      </mat-paginator>
+    </div>
+
+    <div class="table-action">
+      <button (click)="displayAddForm()" mat-raised-button color="primary" class="table-button-primary">Add new table</button>
+    </div>
+  </div>
+
+  <mat-card class="addTableCard" *ngIf="formDisplayed">
+    <mat-card-header>
+        <mat-card-title class="addTableCard-title">
+          <mat-icon color="primary" class="addTableCard-icon">add_circle_outline</mat-icon>
+          Add new table
+        </mat-card-title>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <form class="addTableCard-form">
+        <mat-form-field class="addTableCard-input">
+          <input matInput [formControl]="tableNoFormControl" [(ngModel)]="newTable.tableNo" name="tableNo" type="text" placeholder="Table No.">
+          <mat-error *ngIf="tableNoFormControl.hasError('required')">
+            Table No. is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="addTableCard-input">
+          <input matInput [formControl]="capacityFormControl" [(ngModel)]="newTable.capacity" name="capacity" type="number" placeholder="Table Capacity">
+          <mat-error *ngIf="capacityFormControl.hasError('required')">
+            Capacity is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-divider></mat-divider>
+        <mat-card-actions class="addTableCard-action">
+          <button (click)="addTable()" mat-raised-button color="primary" class="addTableCard-button-primary">Add</button>
+          <button (click)="displayList()" mat-raised-button class="addTableCard-button-primary">Back</button>
+        </mat-card-actions>
+      </form>
+  </mat-card>
+
+  <mat-card class="addTableCard" *ngIf="editFormDisplayed">
+    <mat-card-header>
+        <mat-card-title class="addTableCard-title">
+          <mat-icon color="primary" class="addTableCard-icon">edit</mat-icon>
+          Edit table
+        </mat-card-title>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <form class="addTableCard-form">
+        <mat-form-field class="addTableCard-input">
+          <input matInput [(ngModel)]="editTableData.tableNo" name="tableNo" type="text" placeholder="Table No." disabled>
+        </mat-form-field>
+        <mat-form-field class="addTableCard-input">
+          <input matInput [formControl]="capacityFormControl" [(ngModel)]="editTableData.capacity" name="capacity" type="number" placeholder="Table Capacity">
+          <mat-error *ngIf="capacityFormControl.hasError('required')">
+            Capacity is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-divider></mat-divider>
+        <mat-card-actions class="addTableCard-action">
+          <button (click)="updateTable()" mat-raised-button color="primary" class="addTableCard-button-primary">Update</button>
+          <button (click)="displayList()" mat-raised-button class="addTableCard-button-primary">Back</button>
+        </mat-card-actions>
+      </form>
+  </mat-card>
+</section>

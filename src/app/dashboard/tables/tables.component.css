@@ -1,0 +1,70 @@
+table {
+    width: 100%;
+}
+
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+
+td, th {
+    width: 25%;
+}
+
+tr:hover {
+    cursor: pointer;
+    background-color: #eee;
+}
+
+#tableList {
+    margin: 10px;
+}
+
+.tableList-action {
+    display: flex;
+    flex-direction: row-reverse;
+}
+.tableList-action-button {
+    margin-left: 5px; 
+}
+
+.table-action {
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+.table-button-primary {
+    font-size: 24px;
+    padding: 10px;
+}
+
+.addTableCard {
+    max-width: 450px;
+    margin: 30px auto;
+}
+
+.addTableCard-title {
+    display: flex;
+    align-items: center;
+}
+.addTableCard-icon {
+    padding-right: 10px;
+}
+
+.addTableCard-form {
+    margin-top: 1.25em;
+}
+.addTableCard-input {
+    display: block;
+}
+
+.addTableCard-action {
+    display: flex;
+    flex-direction: row-reverse;
+    padding-bottom: 0;
+    margin-bottom: -8px;
+}
+.addTableCard-button-primary {
+    font-size: 16px;
+}

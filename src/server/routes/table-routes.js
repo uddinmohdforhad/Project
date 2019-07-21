@@ -45,7 +45,7 @@ router.post("/tables/update", (req, res) => {
   })
 })
 
-router.delete("/tables/delete", (req, res) => {
+router.post("/tables/delete", (req, res) => {
   let tableData = req.body
   let tableNo = tableData.tableNo
 

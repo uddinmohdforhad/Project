@@ -33,6 +33,7 @@ import { MyBookingsComponent } from './website/my-bookings/my-bookings.component
 import { OrderComponent } from './website/order/order.component';
 import { AppDashboardComponent } from './dashboard/app-dashboard/app-dashboard.component';
 import { AppWebComponent } from './website/app-web/app-web.component';
+import { TablesComponent } from './dashboard/tables/tables.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { AppWebComponent } from './website/app-web/app-web.component';
     MyBookingsComponent,
     OrderComponent,
     AppDashboardComponent,
-    AppWebComponent
+    AppWebComponent,
+    TablesComponent
   ],
   imports: [
     BrowserModule,
