@@ -14,6 +14,9 @@ export class DashboardService {
   private _staffGetById = `${this.__apiUrl}/api/staff/getById`
   private _staffRemoveUrl = `${this.__apiUrl}/api/staff/remove`
   private _staffUpdateUrl = `${this.__apiUrl}/api/staff/update`
+  private _staffGetAllBookingsUrl = `${this.__apiUrl}/api/staff/getAllBookings`
+  private _staffGetBookingsByDateUrl = `${this.__apiUrl}/api/staff/getBookingsByDate`
+  private _staffGetBookingByIdUrl = `${this.__apiUrl}/api/staff/getBookingById`
 
   @Output() fireIsLoggedIn: EventEmitter<any> = new EventEmitter<any>();
 
@@ -82,5 +85,17 @@ export class DashboardService {
 
   isAdmin() {
     return this.http.post<any>(this._verifyToken, {token: this.getToken()});
+  }
+
+  getAllBookings(){
+    return this.http.get<any>(this._staffGetAllBookingsUrl);
+  }
+
+  getBookingsByDate(req: any) {
+    return this.http.post<any>(this._staffGetBookingsByDateUrl, req)
+  }
+
+  getBookingById(req: any) {
+    return this.http.post<any>(this._staffGetBookingByIdUrl, req)
   }
 }

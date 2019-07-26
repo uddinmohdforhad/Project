@@ -1,0 +1,49 @@
+.staffBookingCard {
+    margin: 30px;
+}
+
+.staffBookingCard-title {
+    display: flex;
+    align-items: center;
+}
+.staffBookingCard-icon {
+    padding-right: 10px;
+}
+.staffBookingCard-subtitle {
+    margin-bottom: 0;
+}
+
+.staffBookingCard-form {
+    display: flex;
+    justify-content: space-between;
+}
+.staffBookingCard-input {
+    display: block;
+    min-width: 400px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.staffBookingCard-button-primary {
+    font-size: 16px;
+    
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+table {
+    width: 100%;
+}
+.bookingList-search {
+    font-size: 14px;
+    width: 100%;
+}
+td, th {
+    width: 25%;
+}
+tr:hover {
+    cursor: pointer;
+    background-color: #eee;
+}
+#bookingList {
+    margin: 10px;
+}

@@ -77,6 +77,38 @@ router.post('/customer/getBookingV2', (req, res) => {
 
   Booking.findById(bookingId, (error, booking) => {
     if (error) console.log(error)
+    else if (!booking) res.status(401).send({success: false, message: `booking (id: ${bookingId}) not found`});
+    else res.status(200).send({success: true, booking})
+  })
+})
+
+router.get('/staff/getAllBookings', (req, res) => {
+  Booking.find({}, (err, bookings) => {
+    if (err) console.log(err)
+    else if (!bookings) res.status(200).send({success: false, message: "no bookings"})
+    else res.status(200).send({success: true, bookings})
+  })
+})
+
+router.post('/staff/getBookingsByDate', (req, res) => {
+  let reqData = req.body
+
+  var date = reqData.date
+
+  Booking.find({date}, (err, bookings) => {
+    if (err) console.log(err)
+    else if (!bookings) res.status(200).send({success: false, message: `no bookings on (${date})`})
+    else res.status(200).send({success: true, bookings})
+  })
+})
+
+router.post('/staff/getBookingById', (req, res) => {
+  let reqData = req.body
+
+  var id = reqData._id
+
+  Booking.findById(id, (error, booking) => {
+    if (error) console.log(error)
     else if (!booking) res.status(401).send({success: false, message: `booking (id: ${id}) not found`});
     else res.status(200).send({success: true, booking})
   })

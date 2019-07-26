@@ -34,6 +34,7 @@ import { OrderComponent } from './website/order/order.component';
 import { AppDashboardComponent } from './dashboard/app-dashboard/app-dashboard.component';
 import { AppWebComponent } from './website/app-web/app-web.component';
 import { TablesComponent } from './dashboard/tables/tables.component';
+import { BookingsComponent } from './dashboard/bookings/bookings.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { TablesComponent } from './dashboard/tables/tables.component';
     OrderComponent,
     AppDashboardComponent,
     AppWebComponent,
-    TablesComponent
+    TablesComponent,
+    BookingsComponent
   ],
   imports: [
     BrowserModule,

@@ -12,6 +12,7 @@ import { StaffMembersComponent } from './dashboard/staff-members/staff-members.c
 import { RegistrationComponent } from './dashboard/registration/registration.component';
 import { MembersDetailsComponent } from './dashboard/staff-members/members-details/members-details.component';
 import { TablesComponent } from './dashboard/tables/tables.component';
+import { BookingsComponent } from './dashboard/bookings/bookings.component';
 
 import { AppWebComponent } from './website/app-web/app-web.component';
 import { HomepageComponent } from './website/homepage/homepage.component';
@@ -50,6 +51,11 @@ const dashboard_routes: Routes = [
     path: 'dashboard/tables',
     component: TablesComponent,
     canActivate: [DashboardRoleGuard],
+  },
+  { 
+    path: 'dashboard/bookings',
+    component: BookingsComponent,
+    canActivate: [DashboardAuthGuard],
   },
 ]
 
