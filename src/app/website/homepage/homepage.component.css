@@ -1,5 +1,5 @@
 #background {
-    background-image: url(http://www.saffrondisley.com/css/backgroundimg.jpg);
+    background-image: url(http://www.saffrondisley.com/images/slideshow/IMG7.png);
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -9,7 +9,7 @@
 }
 #background h1 {
     text-align: center;
-    color: white;
+    color: #3f51b5;
     font-size: 54px;
     font-family: 'Kaushan Script', cursive;
     margin: 0;
