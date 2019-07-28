@@ -6,7 +6,8 @@ const bookingSchema = new Schema({
     customerEmail: String,
     date: String,
     time: String,
-    tables: [String]
+    tables: [String],
+    status: String
 });
 
 module.exports = mongoose.model('bookingV2', bookingSchema, 'BookingV2');

@@ -34,7 +34,8 @@ router.post('/customer/bookingV2', (req, res) => {
       customerEmail: customerObj.email,
       date: date,
       time: time,
-      tables: tables
+      tables: tables,
+      status: "Booked"
     }
 
     var booking = new Booking(newBooking);
@@ -111,6 +112,34 @@ router.post('/staff/getBookingById', (req, res) => {
     if (error) console.log(error)
     else if (!booking) res.status(401).send({success: false, message: `booking (id: ${id}) not found`});
     else res.status(200).send({success: true, booking})
+  })
+})
+
+router.post('/booking/cancel', (req, res) => {
+  let reqData = req.body
+
+  var id = reqData._id
+
+  Booking.findByIdAndUpdate(id, {status: "Canceled"} , (error, booking) => {
+    if (error) console.log(error)
+    else if (!booking) res.status(401).send({success: false, message: `booking (id: ${id}) not found`})
+    else res.status(200).send({success: true, message: "Your booking was canceled", booking})
+  })
+})
+
+router.post('/booking/update', (req, res) => {
+  let reqData = req.body
+
+  var id = reqData._id
+
+  Booking.findByIdAndUpdate(id, { 
+    tables: reqData.tables, 
+    date: reqData.date,
+    time: reqData.time
+  }, (error, updatedBooking) => {
+    if (error) console.log(error)
+    else if (!updatedBooking) res.status(401).send({success: false, message: `booking (id: ${id}) not found`})
+    else res.status(200).send({success: true, message: "Your booking was updated"})
   })
 })
 

@@ -176,7 +176,7 @@ router.post("/tables/updateTablesAvailability", (req, res) => {
     })
   })
 
-  res.status(200).send({success: true, message: "Tables booked"})
+  res.status(200).send({success: true})
 })
 
 module.exports = router;

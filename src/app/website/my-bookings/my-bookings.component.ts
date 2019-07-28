@@ -2,11 +2,13 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import {MatPaginator, MatSort, MatTableDataSource, Sort} from '@angular/material';
 import { BookingService } from 'src/app/services/booking.service';
+import { TableService } from 'src/app/services/table.service';
 
 export interface BookingListData{
   date: string,
   time: string,
   tables: string,
+  status: string,
   _id: string
 }
 
@@ -16,7 +18,7 @@ export interface BookingListData{
   styleUrls: ['./my-bookings.component.css']
 })
 export class MyBookingsComponent implements OnInit {
-  displayedColumns: string[] = ['date', 'time', 'tables', '_id', 'action'];
+  displayedColumns: string[] = ['date', 'time', 'tables', 'status', '_id', 'action'];
   dataSource: MatTableDataSource<BookingListData>;
   bookingList = []
 
@@ -24,7 +26,8 @@ export class MyBookingsComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private _auth: AuthService,
-              private _bookingServece: BookingService) { }
+              private _bookingServece: BookingService,
+              private _tableService: TableService) { }
 
   ngOnInit() {
     this._bookingServece.getMyBookings()
@@ -71,6 +74,27 @@ export class MyBookingsComponent implements OnInit {
     }
   }
 
+  cancelBooking(id) {
+    console.log(id)
+    this._bookingServece.CancelBooking({_id: id}).subscribe(
+      res => {
+        var updateTablesAvailability = {
+          tables: res.booking.tables,
+          date: res.booking.date,
+          time: res.booking.time,
+          updateAvailability: true
+        }
+        this._tableService.updateTablesAvailability(updateTablesAvailability).subscribe(
+          updateRes => {
+            alert(res.message)
+            this.ngOnInit()
+          }
+        )
+      },
+      err => alert(err.error.message)
+    )
+  }
+
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
 
@@ -92,6 +116,7 @@ export class MyBookingsComponent implements OnInit {
         case 'date': return compare(a.date, b.date, isAsc);
         case 'time': return compare(a.time, b.time, isAsc);
         case 'tables': return compare(a.tables, b.tables, isAsc);
+        case 'status': return compare(a.status, b.status, isAsc);
         case '_id': return compare(a._id, b._id, isAsc);
         default: return 0;
       }
