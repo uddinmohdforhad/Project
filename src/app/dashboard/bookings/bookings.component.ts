@@ -5,6 +5,7 @@ import { DashboardService } from 'src/app/services/dashboard.service'
 export interface BookingListData{
   time: string,
   tables: string,
+  status: string,
   customerEmail: string,
   _id: string
 }
@@ -17,7 +18,7 @@ export interface BookingListData{
 export class BookingsComponent implements OnInit {
   selectedDate: Date = new Date();
 
-  displayedColumns: string[] = ['time', 'tables', 'email', '_id'];
+  displayedColumns: string[] = ['time', 'tables', 'status', 'email', '_id'];
   dataSource: MatTableDataSource<BookingListData>;
   bookingList = []
 
@@ -96,6 +97,7 @@ export class BookingsComponent implements OnInit {
       switch (sort.active) {
         case 'time': return compare(a.time, b.time, isAsc);
         case 'tables': return compare(a.tables, b.tables, isAsc);
+        case 'status': return compare(a.status, b.status, isAsc);
         case 'email': return compare(a.customerEmail, b.customerEmail, isAsc);
         case '_id': return compare(a._id, b._id, isAsc);
         default: return 0;
