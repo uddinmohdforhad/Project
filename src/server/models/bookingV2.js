@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const bookingSchema = new Schema({
     customerId: String,
     customerEmail: String,
+    orderId: String,
     date: String,
     time: String,
     tables: [String],

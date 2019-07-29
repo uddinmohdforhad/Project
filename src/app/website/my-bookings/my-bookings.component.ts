@@ -9,6 +9,7 @@ export interface BookingListData{
   time: string,
   tables: string,
   status: string,
+  orderId: string,
   _id: string
 }
 

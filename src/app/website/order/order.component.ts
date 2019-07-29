@@ -94,7 +94,8 @@ export class OrderComponent implements OnInit {
       .subscribe(
         res => {
           var booking = {
-            _id: res.order.bookingId
+            _id: res.order.bookingId,
+            orderId: res.order._id
           }
           this._bookingService.BookingStatusToOrdered(booking).subscribe(
             _ => {
