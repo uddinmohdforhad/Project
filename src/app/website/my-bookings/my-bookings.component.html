@@ -33,12 +33,16 @@
           <!-- ID Column -->
         <ng-container matColumnDef="_id">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
-          <td mat-cell *matCellDef="let row"> {{row._id}} </td>
+          <td mat-cell *matCellDef="let row" class="id_padding"> {{row._id}} </td>
         </ng-container>
 
         <ng-container matColumnDef="action">
           <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
-          <td mat-cell *matCellDef="let row"> <button mat-raised-button color="warn" (click)="cancelBooking(row._id)">Cancel</button> </td>
+          <td mat-cell *matCellDef="let row">
+              <div *ngIf="displayCancelButton(row.status, row.date)"><button mat-raised-button color="warn" class="action_button" (click)="cancelBooking(row._id)">Cancel</button></div>
+              <div *ngIf="displayOrderButton(row.status, row.date)"><button mat-raised-button color="primary" class="action_button" (click)="order()">Order</button></div>
+              <div *ngIf="displayCheckOrderButton(row.status)"><button mat-raised-button class="action_button action_button_default" (click)="checkOrder()">Check Order</button></div>
+          </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

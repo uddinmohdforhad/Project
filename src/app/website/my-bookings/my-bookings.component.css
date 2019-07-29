@@ -12,10 +12,20 @@ td, th {
 }
 
 tr:hover {
-    cursor: pointer;
     background-color: #eee;
+}
+
+.action_button {
+    width: 100%;
+}
+.action_button_default {
+    background-color: #999;
 }
 
 #myBookingList {
     margin: 10px;
+}
+
+.id_padding {
+    padding-right: 5px;
 }

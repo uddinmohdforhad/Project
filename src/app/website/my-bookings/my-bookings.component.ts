@@ -75,25 +75,76 @@ export class MyBookingsComponent implements OnInit {
   }
 
   cancelBooking(id) {
-    console.log(id)
-    this._bookingServece.CancelBooking({_id: id}).subscribe(
-      res => {
-        var updateTablesAvailability = {
-          tables: res.booking.tables,
-          date: res.booking.date,
-          time: res.booking.time,
-          updateAvailability: true
-        }
-        this._tableService.updateTablesAvailability(updateTablesAvailability).subscribe(
-          updateRes => {
-            alert(res.message)
-            this.ngOnInit()
+    var cancelConfirmation = confirm("Do you want to cancel the booking?")
+    if(cancelConfirmation)
+    {
+      this._bookingServece.CancelBooking({_id: id}).subscribe(
+        res => {
+          var updateTablesAvailability = {
+            tables: res.booking.tables,
+            date: res.booking.date,
+            time: res.booking.time,
+            updateAvailability: true
           }
-        )
-      },
-      err => alert(err.error.message)
-    )
+          this._tableService.updateTablesAvailability(updateTablesAvailability).subscribe(
+            updateRes => {
+              alert(res.message)
+              this.ngOnInit()
+            }
+          )
+        },
+        err => alert(err.error.message)
+      )
+    }
   }
+
+  order() {
+    console.log("Todo")
+  }
+
+  checkOrder() {
+    console.log("Todo")
+  }
+
+  // Action Buttons Starts here
+  TODAY: Date = new Date();
+  todayToString() {
+    var month = (this.TODAY.getMonth()+1).toString();
+    if(this.TODAY.getMonth()+1 < 10)
+    {
+      month = `0${this.TODAY.getMonth()+1}`
+    }
+    return `${this.TODAY.getFullYear()}${month}${this.TODAY.getDate()}`
+  }
+  getToday() {
+    return this.getBiutifyDateString(this.todayToString())
+  }
+
+  displayCancelButton(status, date) {
+    var today = new Date(this.getToday())
+    var bookingDate = new Date(date)
+    if (status == "Booked") {
+      if (bookingDate.getTime() > today.getTime()){
+        return true
+      }
+    }
+    return false
+  }
+  displayOrderButton(status, date) {
+    if (status == "Booked") {
+      if (date == this.getToday()){
+        return true
+      }
+    }
+    return false
+  }
+  displayCheckOrderButton(status) {
+    if (status == "Ordered") {
+      return true
+    }
+    return false
+  }
+  // End Action Buttons 
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
