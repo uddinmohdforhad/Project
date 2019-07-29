@@ -10,7 +10,7 @@ export class AuthService {
   private _customerLogInUrl = `${this.__apiUrl}/api/customer/login`
   private _verifyToken = `${this.__apiUrl}/api/customer/verify-token`
   private _orderUrl = `${this.__apiUrl}/api/customer/order`
-
+  private _getOrderByIdUrl = `${this.__apiUrl}/api/order/getById`
 
   @Output() fireIsLoggedIn: EventEmitter<any> = new EventEmitter<any>();
 
@@ -61,5 +61,9 @@ export class AuthService {
 
   takeOrder(order: any) {
     return this.http.post<any>(this._orderUrl, order);
+  }
+
+  getOrderById(order: any) {
+    return this.http.post<any>(this._getOrderByIdUrl, order);
   }
 }

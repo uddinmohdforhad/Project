@@ -9,6 +9,7 @@ const cors = require('cors');
 const api = require('./src/server/routes/api');
 const table_routes = require('./src/server/routes/table-routes');
 const booking_routes = require('./src/server/routes/booking-routes');
+const orders_routes = require('./src/server/routes/orders-routes');
 
 const app = express();
 app.use(cors());
@@ -24,7 +25,8 @@ app.use(express.static(__dirname + 'dist/Project'));
 app.use('/api', [
   api, 
   table_routes, 
-  booking_routes
+  booking_routes,
+  orders_routes
 ]);
 
 // Catch all other routes and return the index file

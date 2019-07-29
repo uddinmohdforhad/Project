@@ -5,7 +5,8 @@ const orderSchema = new Schema({
     customerId: String,
     bookingId: String,
     orderList: [],
-    totalPayment: String 
+    totalPayment: String,
+    date: String
 });
 
 module.exports = mongoose.model('order', orderSchema, 'Order');

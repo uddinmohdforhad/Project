@@ -231,18 +231,5 @@ router.post('/customer/verify-token', (req, res) => {
   });
 })
 
-router.post('/customer/order', (req, res) => {
-  let orderData = req.body
-
-  var newOrder = new Order(orderData)
-  console.log(newOrder)
-  newOrder.save((error, order) => {
-    if (error) { 
-      res.status(500).send(error)
-    } else {
-      res.status(200).send({success: true, order})
-    }
-  })
-})
 
 module.exports = router;
