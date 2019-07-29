@@ -23,6 +23,7 @@ import { BookingComponent } from './website/booking/booking.component';
 import { MyBookingsComponent } from './website/my-bookings/my-bookings.component';
 import { OrderComponent } from './website/order/order.component';
 import { PreviousOrderComponent } from './website/previous-order/previous-order.component';
+import { MenuComponent } from './website/menu/menu.component';
 
 const dashboard_routes: Routes = [
   { 
@@ -83,6 +84,10 @@ const web_routes: Routes = [
   {
     path: 'log-in',
     component: LoginComponent
+  },
+  {
+    path: 'menu',
+    component: MenuComponent
   },
   {
     path: 'book-table',

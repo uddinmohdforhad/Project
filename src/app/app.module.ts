@@ -37,6 +37,7 @@ import { TablesComponent } from './dashboard/tables/tables.component';
 import { BookingsComponent } from './dashboard/bookings/bookings.component';
 import { PreviousOrderComponent } from './website/previous-order/previous-order.component';
 import { AllOrdersComponent } from './dashboard/all-orders/all-orders.component';
+import { MenuComponent } from './website/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { AllOrdersComponent } from './dashboard/all-orders/all-orders.component'
     TablesComponent,
     BookingsComponent,
     PreviousOrderComponent,
-    AllOrdersComponent
+    AllOrdersComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
