@@ -26,3 +26,13 @@
     display: flex;
     justify-content: space-between
 }
+
+.table-action {
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+.table-button-primary {
+    font-size: 24px;
+}
