@@ -87,15 +87,22 @@ export class OrderComponent implements OnInit {
       customerId: this.bookingInfo.customerId,
       bookingId: this.bookingInfo.bookingId,
       orderList: this.selectedItems,
-      totalPayment: this.totalPayment.toString 
+      totalPayment: this.totalPayment.toString()
     }
 
     this._auth.takeOrder(order)
       .subscribe(
         res => {
-          console.log(res)
-          alert(`order confirmed, your order no. ${res.order._id}`)
-          this._router.navigate([''])
+          var booking = {
+            _id: res.order.bookingId
+          }
+          this._bookingService.BookingStatusToOrdered(booking).subscribe(
+            _ => {
+              console.log(res)
+              alert(`order confirmed, your order no. ${res.order._id}`)
+              this._router.navigate([''])
+            }
+          )
         },
         err => alert(err.error.message)
       )

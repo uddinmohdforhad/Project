@@ -12,6 +12,7 @@ export class BookingService {
   private _getBookingsUrl = `${this.__apiUrl}/api/customer/getBookingsV2`
   private _getBookingUrl = `${this.__apiUrl}/api/customer/getBookingV2`
   private _CancelBookingUrl = `${this.__apiUrl}/api/booking/cancel`
+  private _OrderedBookingUrl = `${this.__apiUrl}/api/booking/ordered`
   private _updateBookingUrl = `${this.__apiUrl}/api/booking/update`
 
   constructor(private http: HttpClient,
@@ -34,6 +35,11 @@ export class BookingService {
 
   CancelBooking(booking: any){
     return this.http.post<any>(this._CancelBookingUrl, booking);
+  }
+
+  BookingStatusToOrdered(booking: any) {
+    console.log(booking)
+    return this.http.post<any>(this._OrderedBookingUrl, booking);
   }
 
   updateBooking(booking: any){

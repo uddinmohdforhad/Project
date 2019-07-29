@@ -98,10 +98,6 @@ export class MyBookingsComponent implements OnInit {
     }
   }
 
-  order() {
-    console.log("Todo")
-  }
-
   checkOrder() {
     console.log("Todo")
   }

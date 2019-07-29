@@ -127,6 +127,18 @@ router.post('/booking/cancel', (req, res) => {
   })
 })
 
+router.post('/booking/ordered', (req, res) => {
+  let reqData = req.body
+
+  var id = reqData._id
+
+  Booking.findByIdAndUpdate(id, {status: "Ordered"} , (error, booking) => {
+    if (error) console.log(error)
+    else if (!booking) res.status(401).send({success: false, message: `booking (id: ${id}) not found`})
+    else res.status(200).send({success: true})
+  })
+})
+
 router.post('/booking/update', (req, res) => {
   let reqData = req.body
 
