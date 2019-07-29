@@ -5,32 +5,33 @@
   <span class="spacer"></span>
 
   <button mat-button [matMenuTriggerFor]="customerMenu" class="nav-btn" *ngIf="staff.isLoggedIn">
-    {{ staff.email }}
+    <mat-icon>account_circle</mat-icon>{{ staff.email }}
   </button>
   
   <button mat-button class="nav-btn" routerLink="/dashboard/logging" *ngIf="!staff.isLoggedIn">
     Log in
   </button>
-  <button mat-button [matMenuTriggerFor]="menu" class="nav-btn">
-    <mat-icon>more_vert</mat-icon>
-  </button>
-  <mat-menu #menu="matMenu">
-    <p mat-menu-item disabled class="subnav-header" routerLink="/dashboard">Staff Dashboard</p>
-    <mat-divider></mat-divider>
-    <button mat-menu-item routerLink="/dashboard/staff-members">
-      <span>Staff List</span>
-    </button>
-    <button mat-menu-item routerLink="/dashboard/register">
-      <span>Registration</span>
-    </button>
-    <button mat-menu-item routerLink="/dashboard/logging">
-      <span>Log in</span>
-    </button>
-  </mat-menu>
+  
   <mat-menu #customerMenu="matMenu">
     <p mat-menu-item disabled class="subnav-header" routerLink="/dashboard">Role: <span class="red-text">{{ isAdmin() }}</span></p>
     <mat-divider></mat-divider>
-   
+
+    <button mat-menu-item routerLink="/dashboard/orders" *ngIf="staff.isAdmin">
+      <span>Order List</span>
+    </button>
+    <button mat-menu-item routerLink="/dashboard/bookings">
+      <span>Booking List</span>
+    </button>
+    <button mat-menu-item routerLink="/dashboard/tables" *ngIf="staff.isAdmin">
+      <span>Table List</span>
+    </button>
+    <button mat-menu-item routerLink="/dashboard/staff-members" *ngIf="staff.isAdmin">
+      <span>Staff List</span>
+    </button>
+    <button mat-menu-item routerLink="/dashboard/register" *ngIf="staff.isAdmin">
+      <span>Registration</span>
+    </button>
+
     <mat-divider></mat-divider>
     <button mat-menu-item (click)="logOut()">
       Log out
