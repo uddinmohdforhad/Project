@@ -1,0 +1,24 @@
+<section>
+  <mat-card class="myOrder">
+    <mat-card-header>
+      <mat-card-title class="myOrder-title">
+        <mat-icon color="primary" class="myOrder-icon">receipt</mat-icon>
+        Order number 
+      </mat-card-title>
+      <mat-card-subtitle class=myOrder-subtitle>
+        <div>{{myOrder.id}}</div>
+        <div>{{myOrder.date}}</div>
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <div class="list">
+      <div class="flex-container" *ngFor="let item of myOrder.orderList">
+        <span>{{item.name}}</span><span>£{{item.price}}</span>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <h3 class="flex-container padding-top">
+      <span>Total Payment:</span> <span>£{{myOrder.totalPrice}}</span>
+    </h3>
+  </mat-card>
+</section>

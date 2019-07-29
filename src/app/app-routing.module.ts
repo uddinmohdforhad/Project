@@ -21,6 +21,7 @@ import { LoginComponent } from './website/login/login.component';
 import { BookingComponent } from './website/booking/booking.component';
 import { MyBookingsComponent } from './website/my-bookings/my-bookings.component';
 import { OrderComponent } from './website/order/order.component';
+import { PreviousOrderComponent } from './website/previous-order/previous-order.component';
 
 const dashboard_routes: Routes = [
   { 
@@ -86,7 +87,12 @@ const web_routes: Routes = [
     path: 'order/:bookId',
     component: OrderComponent,
     canActivate: [AuthGuard]
-  }
+  },
+  {
+    path: 'my-order/:id',
+    component: PreviousOrderComponent,
+    canActivate: [AuthGuard]
+  },
 ]
 
 const routes: Routes = [

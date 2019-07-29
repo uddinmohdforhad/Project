@@ -1,0 +1,28 @@
+.myOrder {
+    max-width: 450px;
+    margin: 30px auto;
+}
+
+.myOrder-title {
+    display: flex;
+    align-items: center;
+}
+.myOrder-subtitle {
+    margin-bottom: 0;
+}
+.myOrder-icon {
+    padding-right: 10px;
+}
+.padding-top {
+    padding-top: 10px;
+}
+
+.list {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between
+}
