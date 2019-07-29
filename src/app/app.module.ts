@@ -36,6 +36,7 @@ import { AppWebComponent } from './website/app-web/app-web.component';
 import { TablesComponent } from './dashboard/tables/tables.component';
 import { BookingsComponent } from './dashboard/bookings/bookings.component';
 import { PreviousOrderComponent } from './website/previous-order/previous-order.component';
+import { AllOrdersComponent } from './dashboard/all-orders/all-orders.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { PreviousOrderComponent } from './website/previous-order/previous-order.
     AppWebComponent,
     TablesComponent,
     BookingsComponent,
-    PreviousOrderComponent
+    PreviousOrderComponent,
+    AllOrdersComponent
   ],
   imports: [
     BrowserModule,

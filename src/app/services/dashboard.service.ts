@@ -17,6 +17,7 @@ export class DashboardService {
   private _staffGetAllBookingsUrl = `${this.__apiUrl}/api/staff/getAllBookings`
   private _staffGetBookingsByDateUrl = `${this.__apiUrl}/api/staff/getBookingsByDate`
   private _staffGetBookingByIdUrl = `${this.__apiUrl}/api/staff/getBookingById`
+  private _adminGetOrders = `${this.__apiUrl}/api/order/get`
 
   @Output() fireIsLoggedIn: EventEmitter<any> = new EventEmitter<any>();
 
@@ -97,5 +98,9 @@ export class DashboardService {
 
   getBookingById(req: any) {
     return this.http.post<any>(this._staffGetBookingByIdUrl, req)
+  }
+
+  getAllOrders(){
+    return this.http.get<any>(this._adminGetOrders)
   }
 }

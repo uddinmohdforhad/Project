@@ -43,4 +43,11 @@ router.post('/order/getById', (req, res) => {
   })
 })
 
+router.get('/order/get', (req, res) => {
+  Order.find((error, orders) => {
+    if(error) console.log(error)
+    else res.status(200).send({success: true, orders})
+  })
+})
+
 module.exports = router;

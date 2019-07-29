@@ -13,6 +13,7 @@ import { RegistrationComponent } from './dashboard/registration/registration.com
 import { MembersDetailsComponent } from './dashboard/staff-members/members-details/members-details.component';
 import { TablesComponent } from './dashboard/tables/tables.component';
 import { BookingsComponent } from './dashboard/bookings/bookings.component';
+import { AllOrdersComponent } from './dashboard/all-orders/all-orders.component'
 
 import { AppWebComponent } from './website/app-web/app-web.component';
 import { HomepageComponent } from './website/homepage/homepage.component';
@@ -56,6 +57,16 @@ const dashboard_routes: Routes = [
   { 
     path: 'dashboard/bookings',
     component: BookingsComponent,
+    canActivate: [DashboardAuthGuard],
+  },
+  { 
+    path: 'dashboard/orders',
+    component: AllOrdersComponent,
+    canActivate: [DashboardRoleGuard],
+  },
+  { 
+    path: 'dashboard/order/:id',
+    component: PreviousOrderComponent,
     canActivate: [DashboardAuthGuard],
   },
 ]
