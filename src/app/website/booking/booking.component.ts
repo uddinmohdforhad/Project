@@ -23,7 +23,11 @@ export interface Table {
 })
 
 export class BookingComponent implements OnInit {
-  selectedDate: Date = new Date();
+  today: Date = new Date();
+  tomorrow: Date = new Date(this.today.setTime(this.today.getTime() + 86400000));
+  minDate: Date = this.tomorrow; // min is tomorrow
+  maxDate: Date = new Date(this.today.setTime(this.today.getTime() + 60 * 86400000)); // max is 2 month from now
+  selectedDate: Date = this.tomorrow;
   selectedTime: string = 'five_six';
   times: Time[] = [
     {value: 'five_six', viewValue: '17:00'},
@@ -48,6 +52,7 @@ export class BookingComponent implements OnInit {
               private _router: Router) { }
 
   ngOnInit() {
+    console.log(this.minDate)
   }
 
   searchAvailableTables() {

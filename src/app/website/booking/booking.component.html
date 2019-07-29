@@ -8,8 +8,8 @@
       </mat-card-header>
       <mat-divider></mat-divider>
       <form class="bookingCard-form">
-        <mat-form-field class="bookingCard-input">
-          <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="selectedDate" [ngModelOptions]="{standalone: true}" required>
+        <mat-form-field class="bookingCard-input" title="Book between a day to sixty days from today">
+          <input matInput [matDatepicker]="picker" [min]="minDate" [max]="maxDate" placeholder="Choose a date" [(ngModel)]="selectedDate" [ngModelOptions]="{standalone: true}"  required>
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
