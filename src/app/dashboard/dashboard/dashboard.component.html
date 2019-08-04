@@ -1,3 +1,21 @@
-<p>
-  Welcome to the Saffron staff dashboard!
-</p>
+<div class="continer">
+  <button mat-raised-button color="primary" class="item" routerLink="/dashboard/orders" *ngIf="staff.isAdmin">
+    <span>Order List</span>
+  </button>
+  <button mat-raised-button color="primary" class="item" routerLink="/dashboard/bookings">
+    <span>Booking List</span>
+  </button>
+  <button mat-raised-button color="primary" class="item" routerLink="/dashboard/tables" *ngIf="staff.isAdmin">
+    <span>Table List</span>
+  </button>
+  <button mat-raised-button color="primary" class="item" routerLink="/dashboard/staff-members" *ngIf="staff.isAdmin">
+    <span>Staff List</span>
+  </button>
+  <button mat-raised-button color="primary" class="item" routerLink="/dashboard/register" *ngIf="staff.isAdmin">
+    <span>Registration</span>
+  </button>
+
+  <button mat-raised-button color="warn" class="item" (click)="logOut()">
+    Log out 
+  </button>
+</div>
